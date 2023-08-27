@@ -1,2 +1,3 @@
-# Basic-Chat
-Chatting Application Project Written in C++
+# Team-Finder Application
+
+Application used to locate Teammates
