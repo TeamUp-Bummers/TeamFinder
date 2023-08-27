@@ -1,3 +1,5 @@
 # Team-Finder Application
 
-Application used to locate Teammates
+
+
+Semester Project : Application for finding teammates for online gamesbased on certain preferences of the user.
