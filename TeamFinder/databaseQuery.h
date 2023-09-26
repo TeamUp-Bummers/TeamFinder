@@ -1,0 +1,8 @@
+#ifndef DATABASEQUERY_H
+#define DATABASEQUERY_H
+
+
+
+
+
+#endif // DATABASEQUERY_H
