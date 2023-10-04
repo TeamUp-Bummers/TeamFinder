@@ -1,5 +1,9 @@
 #include "mainwindow.h"
+#include "databaseQuery.h"
 #include "ui_mainwindow.h"
+
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,15 +22,28 @@ void MainWindow::on_pushButton_clicked()
 {
     QString username = ui->username->text();
     QString password = ui->password->text();
+    QString password_retrieved;
 
-    if(username == "abc" && password == "password"){
-        QMessageBox::information(this,"Login Informtion","Successful");
-        this->hide();
+   password_retrieved= checkCredentials(username,password);
+
+
+
+    if(password == password_retrieved && password_retrieved!="NULL"){
+        QMessageBox::information(this,"Login Status","Successful");
+        this->close();
         Mainscreen *mainscreen = new Mainscreen();
         mainscreen->show();
 
 
-    }else{
+    }else if(password_retrieved=="NULL" && password!=""){
+        QMessageBox::information(this,"Login Status","User Not Found , Consider Registering!");
+    }
+
+    else if(username =="" || password == ""){
+        QMessageBox::warning(this,"Login Status","Fill Up Both Parameters");
+    }
+
+    else{
         QMessageBox::warning(this,"Login Status","Access Denied");
     }
 
