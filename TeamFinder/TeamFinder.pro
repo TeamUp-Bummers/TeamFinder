@@ -13,13 +13,15 @@ SOURCES += \
     main.cpp \
     mainscreen.cpp \
     mainwindow.cpp \
-    register.cpp
+    register.cpp \
+    safteyinspector.cpp
 
 HEADERS += \
     databaseQuery.h \
     mainscreen.h \
     mainwindow.h \
-    register.h
+    register.h \
+    safteyinspector.h
 
 FORMS += \
     mainscreen.ui \

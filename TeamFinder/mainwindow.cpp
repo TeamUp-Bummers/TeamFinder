@@ -23,7 +23,7 @@ void MainWindow::on_pushButton_clicked()
     QString username = ui->username->text();
     QString password = ui->password->text();
     Login_Status status = Login(username,password);
-    if(username !="" && password !=""){
+    if(!(username.isEmpty()) && !(password.isEmpty())){
         if(status == NO_ACCOUNT){
             QMessageBox::information(this,"Login Status","No Account with that username found !");
         }else if(status == ACCESS_DENIED){

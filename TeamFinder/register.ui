@@ -27,7 +27,7 @@
      <string>Register</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="username">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="password">
     <property name="geometry">
      <rect>
       <x>40</x>
@@ -47,7 +47,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="confirm_password">
     <property name="geometry">
      <rect>
       <x>40</x>
