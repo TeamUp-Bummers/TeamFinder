@@ -4,12 +4,21 @@
 #include <QtDebug>
 #include <QtSql>
 #include <QtSql/QSqlDatabase>
-#include <string>
 #include <QString>
 #include <QMessageBox>
 
+enum Login_Status{
+    NO_ACCOUNT,
+    ACCESS_GRANTED,
+    ACCESS_DENIED
+};
 
-void setDatabaseInformation();
-QString checkCredentials(const QString&,const QString&);
+void connectDatabase();
+bool userNameExists(const QString&);
+bool passwordMatch(const QString& username,const QString& password,const QString& conf_password="");
+Login_Status Login(const QString&,const QString&);
+
+
+
 
 #endif // DATABASEQUERY_H

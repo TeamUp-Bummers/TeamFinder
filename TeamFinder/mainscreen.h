@@ -15,8 +15,6 @@ public:
     explicit Mainscreen(QWidget *parent = nullptr);
     ~Mainscreen();
 
-private slots:
-    void on_actionLogotu_triggered();
 
 private:
     Ui::Mainscreen *ui;

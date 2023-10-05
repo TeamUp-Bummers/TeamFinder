@@ -22,29 +22,21 @@ void MainWindow::on_pushButton_clicked()
 {
     QString username = ui->username->text();
     QString password = ui->password->text();
-    QString password_retrieved;
+    Login_Status status = Login(username,password);
+    if(username !="" && password !=""){
+        if(status == NO_ACCOUNT){
+            QMessageBox::information(this,"Login Status","No Account with that username found !");
+        }else if(status == ACCESS_DENIED){
+            QMessageBox::information(this,"Login Status","Incorrect Password !");
+        }else if(status == ACCESS_GRANTED){
+            Mainscreen* mainscreen = new Mainscreen();
+            this->close();
+            mainscreen->show();
 
-   password_retrieved= checkCredentials(username,password);
+        }
 
-
-
-    if(password == password_retrieved && password_retrieved!="NULL"){
-        QMessageBox::information(this,"Login Status","Successful");
-        this->close();
-        Mainscreen *mainscreen = new Mainscreen();
-        mainscreen->show();
-
-
-    }else if(password_retrieved=="NULL" && password!=""){
-        QMessageBox::information(this,"Login Status","User Not Found , Consider Registering!");
-    }
-
-    else if(username =="" || password == ""){
-        QMessageBox::warning(this,"Login Status","Fill Up Both Parameters");
-    }
-
-    else{
-        QMessageBox::warning(this,"Login Status","Access Denied");
+    }else{
+        QMessageBox::information(this,"Login Status","Fill Up Username and Password Before Logging In !");
     }
 
 }

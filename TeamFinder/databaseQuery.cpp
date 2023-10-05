@@ -1,7 +1,7 @@
 #include "databaseQuery.h"
 
 
-void setDatabaseInformation(){
+void connectDatabase(){
 
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("127.0.0.1");
@@ -17,31 +17,46 @@ void setDatabaseInformation(){
 
 }
 
-QString checkCredentials(const QString& username, const QString& password){
-
+bool userNameExists(const QString& username){
     QSqlQuery query;
-
-    query.prepare("SELECT username FROM teamfinder.users WHERE username=(:username_id)");
-    query.bindValue(":username_id",username);
+    QString result;
+    query.prepare("SELECT username FROM teamfinder.users WHERE username=(:username)");
+    query.bindValue(":username",username);
     query.exec();
     if(query.next()){
-        QString result= query.value(0).toString();
-        query.prepare("SELECT password FROM teamfinder.users WHERE username=(:username)");
-        query.bindValue(":username",username);
-        query.exec();
-        if(query.next()){
-            result = query.value(0).toString();
-            return result;
-        }
-
+        result = query.value(0).toString();
+        if(result == username) return true;
     }else{
-
-        return "NULL";
+        return false;
     }
 
 
-
 }
+
+bool passwordMatch(const QString& username,const QString& password,const QString& conf_password){
+    QSqlQuery query;
+    QString result;
+    query.prepare("SELECT password FROM teamfinder.users WHERE username=(:username)");
+    query.bindValue(":username",username);
+    query.exec();
+    if(query.next()){
+        result = query.value(0).toString();
+        if(result == password) return true;
+        return false;
+    }
+}
+
+
+
+Login_Status Login(const QString& username, const QString& password){
+    Login_Status status;
+    if(!userNameExists(username)) return NO_ACCOUNT;
+    if(!passwordMatch(username,password)) return ACCESS_DENIED;
+    return ACCESS_GRANTED;
+
+};
+
+
 
 
 

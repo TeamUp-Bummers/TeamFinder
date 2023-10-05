@@ -15,11 +15,3 @@ Mainscreen::~Mainscreen()
     delete ui;
 }
 
-void Mainscreen::on_actionLogotu_triggered()
-{
-    this->hide();
-    MainWindow* mainwindow = new MainWindow();
-    mainwindow->show();
-
-}
-

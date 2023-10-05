@@ -14,30 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
-   </property>
-   <widget class="QMenu" name="menuUser">
-    <property name="title">
-     <string>User</string>
-    </property>
-    <addaction name="separator"/>
-    <addaction name="actionLogotu"/>
-   </widget>
-   <addaction name="menuUser"/>
-  </widget>
   <widget class="QStatusBar" name="statusbar"/>
-  <action name="actionLogotu">
-   <property name="text">
-    <string>Logout</string>
-   </property>
-  </action>
  </widget>
  <resources/>
  <connections/>
