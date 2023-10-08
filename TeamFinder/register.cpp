@@ -37,6 +37,7 @@ void Register::on_pushButton_clicked()
     QString username = ui->username->text();
     QString password = ui->password->text();
     QString confirmPassword = ui->confirm_password->text();
+
     if(!(username.isEmpty()) && !(password.isEmpty()) && !(confirmPassword.isEmpty())){
 
             Registration_Status status;

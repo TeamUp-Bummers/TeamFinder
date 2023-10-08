@@ -36,14 +36,16 @@ bool userNameExists(const QString& username){
 bool passwordMatch(const QString& username,const QString& password){
 
     QSqlQuery query;
-    QString result;
+    QString hash_password;
+    QString password_salt;
 
-    query.prepare("SELECT password FROM teamfinder.users WHERE username=(:username)");
+    query.prepare("SELECT password,salt FROM teamfinder.users WHERE username=(:username)");
     query.bindValue(":username",username);
     query.exec();
     if(query.next()){
-        result = query.value(0).toString();
-        if(result == HashFunction(password)) return true;
+        hash_password = query.value(0).toString();
+        password_salt = query.value(1).toString();
+        if(hash_password == HashFunction(password+password_salt)) return true;
         return false;
     }
 }
@@ -62,11 +64,12 @@ Login_Status Login(const QString& username, const QString& password){
 
 
 
-void CreateEntry(const QString & username, const QString & password)
+void CreateEntry(const QString & username, const QString & password,const QString& salt)
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO teamfinder.users(username,password) VALUES(:username,:password)");
+    query.prepare("INSERT INTO teamfinder.users(username,password,salt) VALUES(:username,:password,:salt)");
     query.bindValue(":username",username);
     query.bindValue(":password",password);
+    query.bindValue(":salt",salt);
     query.exec();
 }

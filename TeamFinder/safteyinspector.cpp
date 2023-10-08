@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <openssl/sha.h>
 #include <sstream>
+#include <random>
 
 
 bool isValidPassword(const QString &password){
@@ -24,8 +25,8 @@ Registration_Status MakeRegistration(const QString &username, const QString &pas
     if(!(userNameExists(username))){
         if(passwordMatches(password,confirmPassword)){
             if(isValidPassword(password)){
-
-                CreateEntry(username,HashFunction(password));
+                QString password_salt = GenerateSalt();
+                CreateEntry(username,HashFunction(password+password_salt),password_salt);
                 return REGISTERED;
             }else{
                 return WEAK_PASSWORD;
@@ -62,4 +63,19 @@ QString HashFunction(const QString& password){
     qDebug() << hashed_text;
     return hashed_text;
 
+};
+
+
+QString GenerateSalt(){
+
+    const int SALT_SIZE = 32;
+    const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/";
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distrib(0,86);
+    QString Salt;
+    for(int i=0;i<SALT_SIZE;i++){
+        Salt += charset[distrib(gen)];
+    }
+    return Salt;
 };

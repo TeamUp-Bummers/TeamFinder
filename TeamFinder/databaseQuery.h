@@ -20,7 +20,7 @@ void connectDatabase();
 bool userNameExists(const QString&);
 bool passwordMatch(const QString& username,const QString& password);
 Login_Status Login(const QString&,const QString&);
-void CreateEntry(const QString&,const QString&);
+void CreateEntry(const QString&,const QString&,const QString&);
 
 
 #endif // DATABASEQUERY_H
