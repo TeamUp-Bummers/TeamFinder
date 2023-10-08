@@ -37,12 +37,13 @@ bool passwordMatch(const QString& username,const QString& password){
 
     QSqlQuery query;
     QString result;
+
     query.prepare("SELECT password FROM teamfinder.users WHERE username=(:username)");
     query.bindValue(":username",username);
     query.exec();
     if(query.next()){
         result = query.value(0).toString();
-        if(result == password) return true;
+        if(result == HashFunction(password)) return true;
         return false;
     }
 }
