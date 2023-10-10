@@ -60,7 +60,6 @@ void Register::on_pushButton_clicked()
 
     }
 
-    qDebug() << username << password << confirmPassword;
 
 
 }
