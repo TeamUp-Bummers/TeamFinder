@@ -1,5 +1,5 @@
 #include "databaseQuery.h"
-#include "safteyinspector.h"
+
 
 void connectDatabase(){
 
@@ -17,21 +17,19 @@ void connectDatabase(){
 
 }
 
-bool userNameExists(const QString& username){
+
+QString retrieveUserName(const QString& username){
     QSqlQuery query;
     QString result;
-    query.prepare("SELECT username FROM teamfinder.users WHERE username=(:username)");
+    query.prepare("Select username From teamfinder.users WHERE username=(:username)");
     query.bindValue(":username",username);
     query.exec();
     if(query.next()){
         result = query.value(0).toString();
-        if(result == username) return true;
-    }else{
-        return false;
+        return result;
     }
+};
 
-
-}
 
 bool passwordMatch(const QString& username,const QString& password){
 
@@ -48,17 +46,6 @@ bool passwordMatch(const QString& username,const QString& password){
         if(hash_password == HashFunction(password+password_salt)) return true;
         return false;
     }
-}
-
-
-
-
-Login_Status Login(const QString& username, const QString& password){
-    Login_Status status;
-    if(!userNameExists(username)) return NO_ACCOUNT;
-    if(!passwordMatch(username,password)) return ACCESS_DENIED;
-    return ACCESS_GRANTED;
-
 }
 
 

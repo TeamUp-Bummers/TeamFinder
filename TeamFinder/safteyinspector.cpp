@@ -7,22 +7,40 @@
 #include <random>
 
 
+// Check if Username Exists in The Database
+bool UserNameMatches(const QString& username){
+
+    QString query_username = retrieveUserName(username);
+    return (query_username == username)? true : false;
+};
+// Make Login
+Login_Status Login(const QString& username, const QString& password){
+    if(!UserNameMatches(username)) return NO_ACCOUNT;
+    if(!passwordMatch(username,password)) return ACCESS_DENIED;
+    return ACCESS_GRANTED;
+
+}
+
+//Check Password Pattern
 bool isValidPassword(const QString &password){
     std::regex pattern("(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=\\S+$).{8,}");
     if(std::regex_match(password.toStdString(),pattern)) return true;
     return false;
 };
 
+// Check if 2 Password Matches
 bool passwordMatches(const QString &password, const QString& confirm_password)
 {
     if(password == confirm_password) return true;
     return false;
 }
 
+
+// Make Registration If All Condition Checks are Verified
 Registration_Status MakeRegistration(const QString &username, const QString &password, const QString& confirmPassword)
 {
 
-    if(!(userNameExists(username))){
+    if(!(UserNameMatches(username))){
         if(passwordMatches(password,confirmPassword)){
             if(isValidPassword(password)){
                 QString password_salt = GenerateSalt();
@@ -44,6 +62,25 @@ Registration_Status MakeRegistration(const QString &username, const QString &pas
 };
 
 
+
+/* Password Security Functions*/
+
+// Generate Salt For Password
+QString GenerateSalt(){
+
+    const int SALT_SIZE = 32;
+    const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/";
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<int> distrib(0,86);
+    QString Salt;
+    for(int i=0;i<SALT_SIZE;i++){
+        Salt += charset[distrib(gen)];
+    }
+    return Salt;
+};
+
+// Generate Hash For Password
 QString HashFunction(const QString& password){
 
     std::string password_test = password.toStdString();
@@ -64,16 +101,3 @@ QString HashFunction(const QString& password){
 };
 
 
-QString GenerateSalt(){
-
-    const int SALT_SIZE = 32;
-    const char charset[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?/";
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> distrib(0,86);
-    QString Salt;
-    for(int i=0;i<SALT_SIZE;i++){
-        Salt += charset[distrib(gen)];
-    }
-    return Salt;
-};
