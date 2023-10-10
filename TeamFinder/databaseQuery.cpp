@@ -60,3 +60,16 @@ void CreateEntry(const QString & username, const QString & password,const QStrin
     query.bindValue(":salt",salt);
     query.exec();
 }
+
+void updatePassword(const QString &password)
+{
+
+    QSqlQuery query;
+    QString salt = GenerateSalt();
+    query.prepare("UPDATE teamfinder.users SET password=(:password),salt=(:salt) WHERE username=(:username)");
+    query.bindValue(":password",HashFunction(password+salt));
+    query.bindValue(":salt",salt);
+    query.bindValue(":username",CurrentUser);
+    query.exec();
+
+}

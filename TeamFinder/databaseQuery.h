@@ -6,7 +6,7 @@
 #include <QtSql/QSqlDatabase>
 #include <QString>
 #include <QMessageBox>
-#include <safteyinspector.h>
+#include "safteyinspector.h"
 extern QString CurrentUser;
 
 void connectDatabase();
@@ -14,5 +14,5 @@ bool passwordMatch(const QString& username,const QString& password);
 Login_Status Login(const QString&,const QString&);
 void CreateEntry(const QString&,const QString&,const QString&);
 QString retrieveUserName(const QString& username);
-
+void updatePassword(const QString& password);
 #endif // DATABASEQUERY_H
