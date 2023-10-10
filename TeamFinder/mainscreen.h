@@ -2,6 +2,7 @@
 #define MAINSCREEN_H
 
 #include <QMainWindow>
+#include "userprofile.h"
 
 namespace Ui {
 class Mainscreen;
@@ -15,6 +16,9 @@ public:
     explicit Mainscreen(QWidget *parent = nullptr);
     ~Mainscreen();
 
+
+private slots:
+    void on_pushButton_clicked();
 
 private:
     Ui::Mainscreen *ui;

@@ -15,3 +15,11 @@ Mainscreen::~Mainscreen()
     delete ui;
 }
 
+
+void Mainscreen::on_pushButton_clicked()
+{
+    UserProfile* userprofile = new UserProfile();
+    this->close();
+    userprofile->show();
+}
+

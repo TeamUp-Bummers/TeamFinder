@@ -17,19 +17,22 @@ SOURCES += \
     mainscreen.cpp \
     mainwindow.cpp \
     register.cpp \
-    safteyinspector.cpp
+    safteyinspector.cpp \
+    userprofile.cpp
 
 HEADERS += \
     databaseQuery.h \
     mainscreen.h \
     mainwindow.h \
     register.h \
-    safteyinspector.h
+    safteyinspector.h \
+    userprofile.h
 
 FORMS += \
     mainscreen.ui \
     mainwindow.ui \
-    register.ui
+    register.ui \
+    userprofile.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
