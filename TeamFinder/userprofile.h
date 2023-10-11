@@ -24,6 +24,13 @@ protected:
 private slots:
     void on_pushButton_clicked();
 
+
+    void on_GameID_currentTextChanged(const QString &arg1);
+
+    void on_ProfileSave_clicked();
+
+    void on_CancelOut_clicked();
+
 private:
     Ui::UserProfile *ui;
 };

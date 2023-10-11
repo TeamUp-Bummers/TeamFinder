@@ -73,3 +73,63 @@ void updatePassword(const QString &password)
     query.exec();
 
 }
+
+QStringList RetrieveRanks(const QString &game){
+    QSqlQuery query;
+    QStringList result;
+
+    if(game == "Valorant"){
+        query.prepare("SELECT * FROM teamfinder.valorantranks");
+    }else if(game == "Counter Strike"){
+        query.prepare("SELECT * FROM teamfinder.csgoranknames");
+    }
+    query.exec();
+    while(query.next()){
+        result << query.value(0).toString();
+    }
+
+    return result;
+};
+
+void  UpdateUserName(const QString& username){
+
+    QSqlQuery query;
+    query.prepare("UPDATE teamfinder.users SET username=(:username) WHERE username=(:current_username)");
+    query.bindValue(":username",username);
+    query.bindValue(":current_username",CurrentUser);
+    query.exec();
+}
+
+void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime){
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO teamfinder.profile_data (username,profile_description,game_name,game_rank,playtime)"
+                  " VALUES(:username,:profile_description,:game_name,:game_rank,:playtime)"
+                  "ON DUPLICATE KEY UPDATE "
+                  " game_name=(:game_name),game_rank=(:game_rank),profile_description=(:profile_description),playtime=(:playtime)"
+                  );
+    qDebug() << CurrentUser << profile_description << game << rank << playtime;
+    query.bindValue(":username",CurrentUser);
+    query.bindValue(":profile_description",profile_description);
+    query.bindValue(":game_name",game);
+    query.bindValue(":game_rank",rank);
+    query.bindValue(":playtime",playtime);
+    query.exec();
+
+};
+
+ProfileData* RetrieveData(){
+
+    QSqlQuery query;
+    query.prepare("SELECT game_name,game_rank,profile_description,playtime FROM teamfinder.profile_data WHERE username=(:username)");
+    query.bindValue(":username",CurrentUser);
+    query.exec();
+    ProfileData* current_user = new ProfileData();
+    if(query.next()){
+        current_user->game_name = query.value(0).toString();
+        current_user->game_rank = query.value(1).toString();
+        current_user->profile_description = query.value(2).toString();
+        current_user->playtime = query.value(3).toString();
+    }
+    return current_user;
+};

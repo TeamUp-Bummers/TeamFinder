@@ -73,7 +73,7 @@
      </rect>
     </property>
     <property name="placeholderText">
-     <string>Select Game</string>
+     <string>Game </string>
     </property>
    </widget>
    <widget class="QComboBox" name="RankID">
@@ -86,17 +86,7 @@
      </rect>
     </property>
     <property name="placeholderText">
-     <string>Select Rank</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="Playtime">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>400</y>
-      <width>201</width>
-      <height>31</height>
-     </rect>
+     <string> Rank</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_2">
@@ -159,6 +149,45 @@
     </property>
     <property name="text">
      <string>Change Password</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Game">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>200</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Select Game</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Rank">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>280</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Select Rank</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="playtime">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>400</y>
+      <width>191</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
    </widget>
   </widget>
