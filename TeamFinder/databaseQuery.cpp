@@ -93,11 +93,23 @@ QStringList RetrieveRanks(const QString &game){
 
 void  UpdateUserName(const QString& username){
 
-    QSqlQuery query;
-    query.prepare("UPDATE teamfinder.users SET username=(:username) WHERE username=(:current_username)");
-    query.bindValue(":username",username);
-    query.bindValue(":current_username",CurrentUser);
-    query.exec();
+    QSqlQuery query_first;
+    QSqlQuery query_second;
+//    query.prepare("UPDATE teamfinder.users SET username=(:username) WHERE username=(:current_username)");
+//    query.bindValue(":username",username);
+//    query.bindValue(":current_username",CurrentUser);
+//    query.exec();
+    query_first.prepare("UPDATE teamfinder.users SET username=(:username) WHERE username=(:current_username)");
+    query_second.prepare("UPDATE teamfinder.profile_data SET username=(:username) WHERE username=(:current_username)");
+    query_first.bindValue(":username",username);
+    query_first.bindValue(":current_username",CurrentUser);
+    if(query_first.exec()){
+        query_second.bindValue(":username",username);
+        query_second.bindValue(":current_username",CurrentUser);
+        query_second.exec();
+    }
+
+
 }
 
 void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime){

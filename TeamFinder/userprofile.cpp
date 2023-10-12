@@ -61,11 +61,13 @@ void UserProfile::on_GameID_currentTextChanged(const QString &arg1)
 
 void UserProfile::on_ProfileSave_clicked()
 {
+    Mainscreen* mainscreen = new Mainscreen();
     QString current_user = this->ui->username->text();
     QString current_game = this->ui->GameID->currentText();
     QString rank_id = this->ui->RankID->currentText();
     QString profile_description = this->ui->ProfileDescription->toPlainText();
     QString playtime = this->ui->playtime->text();
+
 
 
     bool isUnfilled = (current_game.isEmpty() || rank_id.isEmpty() || profile_description.isEmpty() || playtime.isEmpty());
@@ -80,22 +82,15 @@ void UserProfile::on_ProfileSave_clicked()
             }else{
                 UpdateUserName(current_user);
                 CurrentUser = current_user;
-
+                this->close();
+                delete this;
+                mainscreen->show();
             }
+
         }
-        UpdateProfile(current_game,rank_id,profile_description,playtime.toInt());
-
-
     }
 
-
-
-
-
-    Mainscreen* mainscreen = new Mainscreen();
-    this->close();
-    delete this;
-    mainscreen->show();
+    UpdateProfile(current_game,rank_id,profile_description,playtime.toInt());
 }
 
 
