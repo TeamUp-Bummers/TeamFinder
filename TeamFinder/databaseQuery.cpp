@@ -150,3 +150,42 @@ ProfileData* RetrieveData(){
     }
     return current_user;
 };
+
+
+QSqlQueryModel* RetrieveInformation()
+{
+    QSqlQuery query;
+    QSqlQueryModel* model = new QSqlQueryModel();
+    query.prepare("SELECT username,game_name,game_rank,playtime FROM teamfinder.profile_data WHERE"
+                  " NOT (game_name is NULL OR game_rank is NULL or playtime is NULL or profile_description is NULL OR playtime is NULL or email is NULL)"
+                  " AND username<>(:username) ORDER BY RAND() LIMIT 10");
+    query.bindValue(":username",CurrentUser);
+    query.exec();
+    qDebug() << query.lastError();
+    model->setQuery(query);
+    return model;
+
+}
+
+QSqlQueryModel* Filter(const QString& game,const QString& rank){
+    QSqlQuery query;
+    QSqlQueryModel* model = new QSqlQueryModel();
+
+    QString query_select="SELECT username,game_name,game_rank,playtime FROM teamfinder.profile_data";
+    QString query_isValidCondition= " WHERE NOT (game_name is NULL OR game_rank is NULL or playtime is NULL or profile_description is NULL OR playtime is NULL or email is NULL) AND username<>(:username) ";
+    QString query_gamefilter= " AND game_name=(:game)";
+    QString query_rankfilter =" AND game_rank=(:rank)";
+    QString query_limit = " ORDER BY RAND() LIMIT 10";
+    if(rank.isEmpty()){
+        query.prepare(query_select+query_isValidCondition+query_gamefilter+query_limit);
+    }else{
+        query.prepare(query_select+query_isValidCondition+query_gamefilter+query_rankfilter+query_limit);
+        query.bindValue(":rank",rank);
+    }
+    query.bindValue(":username",CurrentUser);
+   query.bindValue(":game",game);
+    query.exec();
+   qDebug() << query.lastError();
+    model->setQuery(query);
+    return model;
+}

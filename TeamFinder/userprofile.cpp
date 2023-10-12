@@ -108,7 +108,7 @@ void UserProfile::on_CancelOut_clicked()
 {
     Mainscreen* mainscreen = new Mainscreen();
     this->close();
-    delete this;
+
     mainscreen->show();
 
 
