@@ -15,6 +15,8 @@ struct ProfileData{
     QString game_rank;
     QString profile_description;
     QString playtime;
+    QString discord_tag;
+    QString email;
 };
 void connectDatabase();
 bool passwordMatch(const QString& username,const QString& password);
@@ -24,6 +26,7 @@ QString retrieveUserName(const QString& username);
 void updatePassword(const QString& password);
 QStringList RetrieveRanks(const QString& game);
 void  UpdateUserName(const QString& username);
-void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime);
+void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime,const QString& discord_tag,const QString& email);
+
 ProfileData* RetrieveData();
 #endif // DATABASEQUERY_H

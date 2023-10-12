@@ -112,13 +112,13 @@ void  UpdateUserName(const QString& username){
 
 }
 
-void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime){
+void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime,const QString& discord_tag,const QString& email){
 
     QSqlQuery query;
-    query.prepare("INSERT INTO teamfinder.profile_data (username,profile_description,game_name,game_rank,playtime)"
-                  " VALUES(:username,:profile_description,:game_name,:game_rank,:playtime)"
+    query.prepare("INSERT INTO teamfinder.profile_data (username,profile_description,game_name,game_rank,playtime,discord_tag,email)"
+                  " VALUES(:username,:profile_description,:game_name,:game_rank,:playtime,:discord_tag,:email)"
                   "ON DUPLICATE KEY UPDATE "
-                  " game_name=(:game_name),game_rank=(:game_rank),profile_description=(:profile_description),playtime=(:playtime)"
+                  " game_name=(:game_name),game_rank=(:game_rank),profile_description=(:profile_description),playtime=(:playtime),discord_tag=(:discord_tag),email=(:email)"
                   );
     qDebug() << CurrentUser << profile_description << game << rank << playtime;
     query.bindValue(":username",CurrentUser);
@@ -126,6 +126,8 @@ void UpdateProfile(const QString& game, const QString& rank, const QString& prof
     query.bindValue(":game_name",game);
     query.bindValue(":game_rank",rank);
     query.bindValue(":playtime",playtime);
+    query.bindValue(":discord_tag",discord_tag);
+    query.bindValue(":email",email);
     query.exec();
 
 };
@@ -133,7 +135,7 @@ void UpdateProfile(const QString& game, const QString& rank, const QString& prof
 ProfileData* RetrieveData(){
 
     QSqlQuery query;
-    query.prepare("SELECT game_name,game_rank,profile_description,playtime FROM teamfinder.profile_data WHERE username=(:username)");
+    query.prepare("SELECT game_name,game_rank,profile_description,playtime,discord_tag,email FROM teamfinder.profile_data WHERE username=(:username)");
     query.bindValue(":username",CurrentUser);
     query.exec();
     ProfileData* current_user = new ProfileData();
@@ -142,6 +144,9 @@ ProfileData* RetrieveData(){
         current_user->game_rank = query.value(1).toString();
         current_user->profile_description = query.value(2).toString();
         current_user->playtime = query.value(3).toString();
+        current_user->discord_tag = query.value(4).toString();
+        current_user->email = query.value(5).toString();
+
     }
     return current_user;
 };

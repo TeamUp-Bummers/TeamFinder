@@ -32,6 +32,8 @@ void UserProfile::showEvent(QShowEvent *event){
     this->ui->RankID->setCurrentText(current_user->game_rank);
     this->ui->ProfileDescription->setText(current_user->profile_description);
     this->ui->playtime->setText(current_user->playtime);
+    this->ui->discord_tag->setText(current_user->discord_tag);
+    this->ui->contact_link->setText(current_user->email);
     delete current_user;
 
     QMainWindow::showEvent(event);
@@ -61,26 +63,28 @@ void UserProfile::on_GameID_currentTextChanged(const QString &arg1)
 
 void UserProfile::on_ProfileSave_clicked()
 {
-    Mainscreen* mainscreen = new Mainscreen();
+
     QString current_user = this->ui->username->text();
     QString current_game = this->ui->GameID->currentText();
     QString rank_id = this->ui->RankID->currentText();
     QString profile_description = this->ui->ProfileDescription->toPlainText();
     QString playtime = this->ui->playtime->text();
+    QString user_email = this->ui->contact_link->text();
+    QString discord_tag = this->ui->discord_tag->text();
 
-    bool isTrue = true;
+    bool canExit = true;
 
-    bool isUnfilled = (current_game.isEmpty() || rank_id.isEmpty() || profile_description.isEmpty() || playtime.isEmpty());
+    bool isUnfilled = (current_game.isEmpty() || rank_id.isEmpty() || profile_description.isEmpty() || playtime.isEmpty()|| user_email.isEmpty());
     qDebug() << isUnfilled;
 
     if(isUnfilled){
         QMessageBox::information(this,"Information","You Wont Be Listed To Other Users, Until You Fill up Your Profile");
-        delete mainscreen;
+
     }else   {
         if(!(current_user == CurrentUser)){
             if(UserNameMatches(current_user)){
                 QMessageBox::information(this,"Information","This Username Already Exists! Try Another Name");
-                isTrue = false;
+                canExit = false;
             }else{
                 UpdateUserName(current_user);
                 CurrentUser = current_user;
@@ -90,10 +94,11 @@ void UserProfile::on_ProfileSave_clicked()
         }
 
     }
-    if(isTrue){
+    if(canExit){
+        Mainscreen* mainscreen = new Mainscreen();
         this->close();
         mainscreen->show();
-        UpdateProfile(current_game,rank_id,profile_description,playtime.toInt());
+        UpdateProfile(current_game,rank_id,profile_description,playtime.toInt(),discord_tag,user_email);
     }
 }
 
