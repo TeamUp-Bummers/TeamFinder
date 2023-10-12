@@ -68,29 +68,33 @@ void UserProfile::on_ProfileSave_clicked()
     QString profile_description = this->ui->ProfileDescription->toPlainText();
     QString playtime = this->ui->playtime->text();
 
-
+    bool isTrue = true;
 
     bool isUnfilled = (current_game.isEmpty() || rank_id.isEmpty() || profile_description.isEmpty() || playtime.isEmpty());
     qDebug() << isUnfilled;
 
     if(isUnfilled){
         QMessageBox::information(this,"Information","You Wont Be Listed To Other Users, Until You Fill up Your Profile");
-    }else{
+        delete mainscreen;
+    }else   {
         if(!(current_user == CurrentUser)){
             if(UserNameMatches(current_user)){
                 QMessageBox::information(this,"Information","This Username Already Exists! Try Another Name");
+                isTrue = false;
             }else{
                 UpdateUserName(current_user);
                 CurrentUser = current_user;
-                this->close();
-                delete this;
-                mainscreen->show();
+
             }
 
         }
-    }
 
-    UpdateProfile(current_game,rank_id,profile_description,playtime.toInt());
+    }
+    if(isTrue){
+        this->close();
+        mainscreen->show();
+        UpdateProfile(current_game,rank_id,profile_description,playtime.toInt());
+    }
 }
 
 
