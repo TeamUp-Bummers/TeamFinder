@@ -15,7 +15,8 @@ class Mainscreen : public QMainWindow
 public:
     explicit Mainscreen(QWidget *parent = nullptr);
     ~Mainscreen();
-
+protected:
+    void showEvent(QShowEvent *event) override;
 
 private slots:
     void on_pushButton_clicked();

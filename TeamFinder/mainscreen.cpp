@@ -15,11 +15,19 @@ Mainscreen::~Mainscreen()
     delete ui;
 }
 
+void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
+{
+    QMessageBox::information(this,"Information","Loaded Screen");
+
+    QMainWindow::showEvent(event);
+}
+
 
 void Mainscreen::on_pushButton_clicked()
 {
     UserProfile* userprofile = new UserProfile();
     this->close();
+
 
     userprofile->show();
 }
