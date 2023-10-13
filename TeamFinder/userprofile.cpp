@@ -26,7 +26,7 @@ void UserProfile::showEvent(QShowEvent *event){
     this->ui->GameID->addItem("Counter Strike");
     this->ui->GameID->addItem("Valorant");
     // -------------------------------------
-    ProfileData* current_user = RetrieveData();
+    ProfileData* current_user = RetrieveData(CurrentUser);
 
     this->ui->GameID->setCurrentText(current_user->game_name);
     this->ui->RankID->setCurrentText(current_user->game_rank);

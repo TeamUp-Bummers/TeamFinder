@@ -132,11 +132,11 @@ void UpdateProfile(const QString& game, const QString& rank, const QString& prof
 
 };
 
-ProfileData* RetrieveData(){
+ProfileData* RetrieveData(const QString& username){
 
     QSqlQuery query;
     query.prepare("SELECT game_name,game_rank,profile_description,playtime,discord_tag,email FROM teamfinder.profile_data WHERE username=(:username)");
-    query.bindValue(":username",CurrentUser);
+    query.bindValue(":username",username);
     query.exec();
     ProfileData* current_user = new ProfileData();
     if(query.next()){

@@ -19,7 +19,8 @@ SOURCES += \
     mainwindow.cpp \
     register.cpp \
     safteyinspector.cpp \
-    userprofile.cpp
+    userprofile.cpp \
+    viewprofile.cpp
 
 HEADERS += \
     changepassword.h \
@@ -28,14 +29,16 @@ HEADERS += \
     mainwindow.h \
     register.h \
     safteyinspector.h \
-    userprofile.h
+    userprofile.h \
+    viewprofile.h
 
 FORMS += \
     changepassword.ui \
     mainscreen.ui \
     mainwindow.ui \
     register.ui \
-    userprofile.ui
+    userprofile.ui \
+    viewprofile.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -29,6 +29,8 @@ private slots:
 
     void on_rank_currentTextChanged(const QString &arg1);
 
+    void on_tableView_clicked();
+
 private:
     Ui::Mainscreen *ui;
 };

@@ -2,6 +2,7 @@
 #include "mainwindow.h"
 #include "ui_mainscreen.h"
 #include "databaseQuery.h"
+#include "viewprofile.h"
 
 Mainscreen::Mainscreen(QWidget *parent) :
     QMainWindow(parent),
@@ -17,11 +18,10 @@ Mainscreen::~Mainscreen()
 
 void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 {
+    this->ui->tableView->verticalHeader()->hide();
+    this->ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     this->ui->game->addItem("Counter Strike");
     this->ui->game->addItem("Valorant");
-
-
-    QMessageBox::information(this,"Information","Loaded Screen");
     QSqlQueryModel* model = RetrieveInformation();
     this->ui->tableView->setModel(model);
     QMainWindow::showEvent(event);
@@ -75,5 +75,17 @@ void Mainscreen::on_rank_currentTextChanged(const QString &arg1)
 {
     QSqlQueryModel* model = Filter(this->ui->game->currentText(),arg1);
     this->ui->tableView->setModel(model);
+}
+
+
+void Mainscreen::on_tableView_clicked()
+{
+    QModelIndex selectedRow = this->ui->tableView->selectionModel()->currentIndex();
+    QAbstractItemModel* model = this->ui->tableView->model();
+    QModelIndex firstColumnIndex = model->index(selectedRow.row(),0);
+    QString username = this->ui->tableView->model()->data(firstColumnIndex).toString();
+
+    ViewProfile* viewprofile = new ViewProfile(username);
+    viewprofile->show();
 }
 

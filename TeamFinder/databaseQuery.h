@@ -37,7 +37,7 @@ void updatePassword(const QString& password);
 QStringList RetrieveRanks(const QString& game);
 void  UpdateUserName(const QString& username);
 void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime,const QString& discord_tag,const QString& email);
-ProfileData* RetrieveData();
+ProfileData* RetrieveData(const QString& username);
 QSqlQueryModel* RetrieveInformation();
 QSqlQueryModel* Filter(const QString& game,const QString& rank="");
 #endif // DATABASEQUERY_H
