@@ -25,4 +25,7 @@ QString HashFunction(const QString& password);
 QString GenerateSalt();
 bool UserNameMatches(const QString&);
 
+
+
+
 #endif // SAFTEYINSPECTOR_H

@@ -20,13 +20,8 @@ struct ProfileData{
 };
 
 
-struct ProfileData_Short{
-    QString username;
-    QString game_name;
-    QString game_rank;
-    QString playtime;
 
-};
+
 
 void connectDatabase();
 bool passwordMatch(const QString& username,const QString& password);
@@ -40,4 +35,6 @@ void UpdateProfile(const QString& game, const QString& rank, const QString& prof
 ProfileData* RetrieveData(const QString& username);
 QSqlQueryModel* RetrieveInformation();
 QSqlQueryModel* Filter(const QString& game,const QString& rank="");
+QString getParticularData(const QString& string,const QString& username);
+
 #endif // DATABASEQUERY_H

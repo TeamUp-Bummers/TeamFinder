@@ -52,6 +52,11 @@
     <property name="autoFillBackground">
      <bool>false</bool>
     </property>
+    <property name="styleSheet">
+     <string notr="true">QTableView { outline:none; }
+QTableView::item:selected:focus { background:#0078D7; }
+QTableView::item:!selected:focus { background:transparent; }</string>
+    </property>
     <attribute name="horizontalHeaderMinimumSectionSize">
      <number>52</number>
     </attribute>
@@ -68,9 +73,9 @@
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>10</y>
-      <width>61</width>
+      <x>690</x>
+      <y>40</y>
+      <width>101</width>
       <height>31</height>
      </rect>
     </property>
@@ -81,8 +86,8 @@
    <widget class="QComboBox" name="game">
     <property name="geometry">
      <rect>
-      <x>440</x>
-      <y>10</y>
+      <x>510</x>
+      <y>0</y>
       <width>131</width>
       <height>31</height>
      </rect>
@@ -94,9 +99,9 @@
    <widget class="QComboBox" name="rank">
     <property name="geometry">
      <rect>
-      <x>580</x>
-      <y>10</y>
-      <width>141</width>
+      <x>660</x>
+      <y>0</y>
+      <width>131</width>
       <height>31</height>
      </rect>
     </property>
@@ -104,14 +109,124 @@
      <string>Rank</string>
     </property>
    </widget>
-   <widget class="QTableView" name="tableView_2">
+   <widget class="QPushButton" name="addToParty">
+    <property name="geometry">
+     <rect>
+      <x>694</x>
+      <y>560</y>
+      <width>101</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add to Party</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>60</y>
+      <width>183</width>
+      <height>34</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="text">
+     <string>Lobby :</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignJustify|Qt::AlignVCenter</set>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>100</y>
       <width>261</width>
-      <height>281</height>
+      <height>192</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QTableWidget{
+outline:none;
+}
+QTableWidget::item:selected:focus 
+{
+ background:#0078D7;
+ }
+
+QTableWidget::item:!selected:focus
+ { 
+background:transparent;
+ }</string>
+    </property>
+    <attribute name="horizontalHeaderStretchLastSection">
+     <bool>true</bool>
+    </attribute>
+    <attribute name="verticalHeaderVisible">
+     <bool>false</bool>
+    </attribute>
+    <attribute name="verticalHeaderStretchLastSection">
+     <bool>false</bool>
+    </attribute>
+    <column>
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </column>
+    <column>
+     <property name="text">
+      <string>Email</string>
+     </property>
+    </column>
+   </widget>
+   <widget class="QPushButton" name="deleteUser">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>310</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Remove User</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>10</y>
+      <width>101</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Filter By:</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="sendInvite">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Send Invitation</string>
     </property>
    </widget>
   </widget>

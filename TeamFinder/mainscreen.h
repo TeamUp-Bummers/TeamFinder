@@ -4,6 +4,12 @@
 #include <QMainWindow>
 #include "userprofile.h"
 
+struct LobbyData{
+    QString username;
+    QString email;
+
+};
+
 namespace Ui {
 class Mainscreen;
 }
@@ -29,7 +35,17 @@ private slots:
 
     void on_rank_currentTextChanged(const QString &arg1);
 
-    void on_tableView_clicked();
+    void on_tableView_doubleClicked();
+
+    void on_addToParty_clicked();
+
+    void on_tableWidget_doubleClicked();
+
+    void on_deleteUser_clicked();
+
+
+
+
 
 private:
     Ui::Mainscreen *ui;

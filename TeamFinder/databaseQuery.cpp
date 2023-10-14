@@ -161,9 +161,12 @@ QSqlQueryModel* RetrieveInformation()
                   " AND username<>(:username) ORDER BY RAND() LIMIT 10");
     query.bindValue(":username",CurrentUser);
     query.exec();
-    qDebug() << query.lastError();
-    model->setQuery(query);
-    return model;
+    if(query.next()){
+        model->setQuery(query);
+        return model;
+    }else{
+        return nullptr;
+    }
 
 }
 
@@ -189,3 +192,20 @@ QSqlQueryModel* Filter(const QString& game,const QString& rank){
     model->setQuery(query);
     return model;
 }
+
+QString  getParticularData(const QString &string,const QString& username)
+{
+    QString select_statement = "SELECT " + string +" FROM teamfinder.profile_data";
+    QString condition = " WHERE username=(:username)";
+    QSqlQuery query;
+    query.prepare(select_statement+condition);
+    query.bindValue(":username",username);
+    query.exec();
+    if(query.next()){
+      return  query.value(0).toString();
+    }
+
+
+}
+
+
