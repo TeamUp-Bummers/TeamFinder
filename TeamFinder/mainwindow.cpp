@@ -3,7 +3,7 @@
 #include "ui_mainwindow.h"
 
 
-
+QString CurrentUser;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,6 +29,7 @@ void MainWindow::on_pushButton_clicked()
         }else if(status == ACCESS_DENIED){
             QMessageBox::information(this,"Login Status","Incorrect Password !");
         }else if(status == ACCESS_GRANTED){
+            CurrentUser = username;
             Mainscreen* mainscreen = new Mainscreen();
             this->close();
             mainscreen->show();
