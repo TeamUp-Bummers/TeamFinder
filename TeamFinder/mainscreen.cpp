@@ -3,7 +3,8 @@
 #include "ui_mainscreen.h"
 #include "databaseQuery.h"
 #include "viewprofile.h"
-#include <QStandardItemModel>
+
+#include "send_mail.h"
 
 int usercount = 0;
 
@@ -49,7 +50,10 @@ Mainscreen::~Mainscreen()
 
 void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 {
-    if(usercount == 0) this->ui->deleteUser->setDisabled(true);
+    if(usercount == 0){
+        this->ui->deleteUser->setDisabled(true);
+        this->ui->sendInvite->setDisabled(true);
+    };
 
     if(!user_lobby.empty()){
 
@@ -104,6 +108,8 @@ void Mainscreen::on_pushButton_clicked()
 void Mainscreen::on_pushButton_2_clicked()
 {
     CurrentUser = "";
+    user_lobby.clear();
+    usercount = 0;
     this->close();
 
     MainWindow* mainwindow = new MainWindow();
@@ -167,7 +173,7 @@ void Mainscreen::on_tableView_doubleClicked()
 
 void Mainscreen::on_addToParty_clicked()
 {
-    if(usercount<5){
+    if(usercount<4){
          QModelIndex selectedRow = this->ui->tableView->selectionModel()->currentIndex();
          if(selectedRow.isValid()){
 
@@ -182,9 +188,13 @@ void Mainscreen::on_addToParty_clicked()
                     QTableWidgetItem *item_two = new QTableWidgetItem(email);
                     this->ui->tableWidget->setItem(rowCount,0,item);
                     this->ui->tableWidget->setItem(rowCount,1,item_two);
+
+
                     usercount +=1;
                     user_lobby.push_back({username,email});
                     this->ui->deleteUser->setEnabled(true);
+                    this->ui->sendInvite->setEnabled(true);
+
                 }else{
                     QMessageBox::information(this,"Information","This User Has Already Been Added");
                 }
@@ -195,7 +205,7 @@ void Mainscreen::on_addToParty_clicked()
         this->ui->tableView->selectionModel()->clear();
 
     }else{
-         QMessageBox::information(this,"Information","Cant Add More than 5 Users to a Lobby");
+         QMessageBox::information(this,"Information","Cant Add More than 4 Users to a Lobby");
     }
 
 }
@@ -222,7 +232,10 @@ void Mainscreen::on_deleteUser_clicked()
         RemovePlayer(username);
         this->ui->tableWidget->removeRow(selectedRow);
         usercount-=1;
-        if(usercount==0) this->ui->deleteUser->setEnabled(false);
+        if(usercount==0){
+                 this->ui->deleteUser->setEnabled(false);
+                 this->ui->sendInvite->setEnabled(false);
+        }
         this->ui->tableWidget->selectionModel()->clear();
     }else{
         QMessageBox::information(this,"Information","Select a User First !");
@@ -235,4 +248,11 @@ void Mainscreen::on_deleteUser_clicked()
 
 
 
+
+
+void Mainscreen::on_sendInvite_clicked()
+{
+    send_mail* sendinvitation = new send_mail();
+    sendinvitation->exec();
+}
 

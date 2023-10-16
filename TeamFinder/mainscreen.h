@@ -47,6 +47,8 @@ private slots:
 
 
 
+    void on_sendInvite_clicked();
+
 private:
     Ui::Mainscreen *ui;
 };

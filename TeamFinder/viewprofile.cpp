@@ -2,6 +2,8 @@
 #include "ui_viewprofile.h"
 #include "databaseQuery.h"
 
+
+
 ViewProfile::ViewProfile(const QString& username,QWidget *parent) :
     QDialog(parent),username(username),
     ui(new Ui::ViewProfile)
