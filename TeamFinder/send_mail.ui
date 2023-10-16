@@ -36,16 +36,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="email_password">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>90</y>
-     <width>221</width>
-     <height>31</height>
-    </rect>
-   </property>
-  </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
@@ -57,19 +47,6 @@
    </property>
    <property name="text">
     <string>Your Email</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_2">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>70</y>
-     <width>101</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Email Password</string>
    </property>
   </widget>
   <widget class="QTextEdit" name="message">

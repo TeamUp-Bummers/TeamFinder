@@ -73,3 +73,11 @@ else:unix: LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtil
 
 INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Util/include
 DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Util/include
+#YAML
+
+
+
+win32: LIBS += -L$$PWD/../../../../../Qt/Tools/yaml/ -lyaml-cppd
+
+INCLUDEPATH += $$PWD/../../../../../Qt/Tools/yaml/include
+DEPENDPATH += $$PWD/../../../../../Qt/Tools/yaml/include

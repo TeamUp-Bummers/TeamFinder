@@ -6,7 +6,18 @@
 #include <Poco/Net/MailRecipient.h>
 #include <Poco/Net/SMTPClientSession.h>
 #include <Poco/Net/NetException.h>
+#include <yaml-cpp/yaml.h>
+#include <string>
 
+
+extern YAML::Node config;
+
+struct SMTP_Credentials{
+    std::string hostname;
+    std::string username;
+    std::string password;
+    int port_no;
+};
 
 extern int usercount;
 extern std::vector<LobbyData> user_lobby;
@@ -27,12 +38,18 @@ send_mail::~send_mail()
 
 void send_mail::on_sendInvite_clicked()
 {
-    QString password = this->ui->email_password->text();
+    SMTP_Credentials* credentials = new SMTP_Credentials();
+
+    credentials->hostname = config["smtp"]["hostname"].as<std::string>();
+    credentials->username = config["smtp"]["username"].as<std::string>();
+    credentials->password = config["smtp"]["password"].as<std::string>();
+    credentials->port_no = config["smtp"]["port"].as<int>();
+
     QString content = this->ui->message->toPlainText();
     QString email = this->ui->email->text();
     QString subject= this->ui->subject->text();
 
-    bool isEmpty = (password.isEmpty() || content.isEmpty() || email.isEmpty() || subject.isEmpty());
+    bool isEmpty = (content.isEmpty() || email.isEmpty() || subject.isEmpty());
     if(!isEmpty){
         qDebug() << "First Part Complete";
         try{
@@ -44,9 +61,12 @@ void send_mail::on_sendInvite_clicked()
             for(int i=0;i<usercount;i++){
                  message.addRecipient(Poco::Net::MailRecipient(Poco::Net::MailRecipient::PRIMARY_RECIPIENT,user_lobby[i].email.toStdString()));
             }
-            Poco::Net::SMTPClientSession session("sandbox.smtp.mailtrap.io",587);
-            session.login(Poco::Net::SMTPClientSession::AUTH_LOGIN,"[SET __MAIL__TRAP__INFO]","__SET MAILTRAP __PASSWORD"); // using a  test smtp server
+            Poco::Net::SMTPClientSession session(credentials->hostname,credentials->port_no);
+            session.login(Poco::Net::SMTPClientSession::AUTH_LOGIN,credentials->username,credentials->password); // using a  test smtp server
             session.sendMessage(message);
+
+            QMessageBox::information(this,"Invitation","Mail Sent Successfully");
+            this->close();
 
         }catch(Poco::Net::NetException &e){
             qDebug() << "Error :" << e.displayText();
@@ -56,7 +76,7 @@ void send_mail::on_sendInvite_clicked()
     }
 
 
-
+    delete credentials;
 
 }
 

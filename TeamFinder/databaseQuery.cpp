@@ -1,24 +1,44 @@
+#define YAML_CPP_DLL
 #include "databaseQuery.h"
 #include <fstream>
 #include <string>
+#include <yaml-cpp/yaml.h>
 
-
-
+YAML::Node config = YAML::LoadFile("config.yml");
+struct DatabaseInformation{
+    QString hostname;
+    QString username;
+    QString password;
+    QString database_name;
+    int port_no;
+};
 
 void connectDatabase(){
+    try{
 
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
-    db.setHostName("127.0.0.1");
-    db.setUserName("root");
-    db.setPassword("XueHue123");
-    db.setDatabaseName("teamfinder");
+        DatabaseInformation* login_info = new DatabaseInformation();
 
-    if(db.open()){
-        qDebug() << "Database is Connected";
-    }else{
-        qDebug() << "Database isnt Connected";
+        login_info->database_name =QString::fromStdString(config["database"]["name"].as<std::string>());
+        login_info->hostname = QString::fromStdString(config["database"]["hostname"].as<std::string>());
+        login_info->username = QString::fromStdString(config["database"]["username"].as<std::string>());
+        login_info->password = QString::fromStdString(config["database"]["password"].as<std::string>());
+        login_info->port_no = config["database"]["port"].as<int>();
+
+        QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+        db.setHostName(login_info->hostname);
+        db.setUserName(login_info->username);
+        db.setPassword(login_info->password);
+        db.setDatabaseName(login_info->database_name);
+        db.setPort(login_info->port_no);
+        if(db.open()){
+            qDebug() << "Database is Connected";
+        }else{
+            qDebug() << "Database isnt Connected";
+        }
+        delete login_info;
+    }catch(const std::exception& e){
+        qDebug()<< "Error : " << e.what();
     }
-
 }
 
 
