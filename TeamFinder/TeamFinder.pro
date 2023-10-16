@@ -4,7 +4,7 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
 LIBS += -L"C:/Qt/Tools/OpenSSLv3/Win_x64/lib/" -llibcrypto -llibssl
-
+INCLUDEPATH +=C:/Qt/Tools/OpenSSLv3/Win_x64/include
 
 
 
@@ -53,22 +53,23 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
-win32: LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoFoundation
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoFoundation
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoFoundationd
 
 INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Foundation/include
 DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Foundation/include
 
-
-
-
-
-win32: LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoNet
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoNet
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoNetd
 
 INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Net/include
 DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Net/include
 
-
-win32: LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtil
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtil
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtild
+else:unix: LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtil
 
 INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Util/include
 DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Util/include

@@ -10,6 +10,7 @@
 extern QString CurrentUser;
 
 
+
 struct ProfileData{
     QString game_name;
     QString game_rank;
@@ -18,7 +19,6 @@ struct ProfileData{
     QString discord_tag;
     QString email;
 };
-
 
 
 

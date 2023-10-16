@@ -1,4 +1,8 @@
 #include "databaseQuery.h"
+#include <fstream>
+#include <string>
+
+
 
 
 void connectDatabase(){

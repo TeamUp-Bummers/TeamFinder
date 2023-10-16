@@ -18,6 +18,8 @@ enum Login_Status{
 };
 
 
+
+
 bool isValidPassword(const QString& password);
 bool passwordMatches(const QString& password,const QString& confirm_password);
 Registration_Status MakeRegistration(const QString&,const QString&,const QString&);
