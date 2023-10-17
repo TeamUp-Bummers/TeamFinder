@@ -3,8 +3,6 @@ QT       += core gui sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++17
-LIBS += -L"C:/Qt/Tools/OpenSSLv3/Win_x64/lib/" -llibcrypto -llibssl
-INCLUDEPATH +=C:/Qt/Tools/OpenSSLv3/Win_x64/include
 
 
 
@@ -55,29 +53,61 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoFoundation
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoFoundationd
 
-INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Foundation/include
-DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Foundation/include
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoNet
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoNetd
+#---------------OpenSSL--------------------------------#
 
-INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Net/include
-DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Net/include
+win32: LIBS += -L$$PWD/libs/OpenSSL/ -llibcrypto
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtil
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtild
-else:unix: LIBS += -L$$PWD/../../../../../Qt/Tools/Pocco/ -lPocoUtil
-
-INCLUDEPATH += $$PWD/../../../../../Qt/Tools/Pocco/Util/include
-DEPENDPATH += $$PWD/../../../../../Qt/Tools/Pocco/Util/include
-#YAML
+INCLUDEPATH += $$PWD/libs/OpenSSL/include
+DEPENDPATH += $$PWD/libs/OpenSSL/include
 
 
 
-win32: LIBS += -L$$PWD/../../../../../Qt/Tools/yaml/ -lyaml-cppd
+win32: LIBS += -L$$PWD/libs/OpenSSL/ -llibssl
 
-INCLUDEPATH += $$PWD/../../../../../Qt/Tools/yaml/include
-DEPENDPATH += $$PWD/../../../../../Qt/Tools/yaml/include
+INCLUDEPATH += $$PWD/libs/OpenSSL/include
+DEPENDPATH += $$PWD/libs/OpenSSL/include
+
+#-----------------------------------------------#
+
+
+
+win32: LIBS += -L$$PWD/libs/Yaml/ -lyaml-cppd
+
+INCLUDEPATH += $$PWD/libs/Yaml/include
+DEPENDPATH += $$PWD/libs/Yaml/include
+
+
+#------------------------------------------------
+
+
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoFoundation
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoFoundationd
+
+INCLUDEPATH += $$PWD/libs/Poco/Foundation/include
+DEPENDPATH += $$PWD/libs/Poco/Foundation/include
+
+#----------------------------------------
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoNet
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoNetd
+
+INCLUDEPATH += $$PWD/libs/Poco/Net/include
+DEPENDPATH += $$PWD/libs/Poco/Net/include
+
+#-----------------------------------------------
+
+
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoUtil
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoUtild
+
+INCLUDEPATH += $$PWD/libs/Poco/Util/include
+DEPENDPATH += $$PWD/libs/Poco/Util/include
