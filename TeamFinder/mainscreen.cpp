@@ -120,6 +120,7 @@ void Mainscreen::on_pushButton_2_clicked()
 
 void Mainscreen::on_pushButton_3_clicked()
 {
+    this->ui->lineEdit->clear();
     this->ui->game->setCurrentIndex(-1);
     this->ui->rank->setCurrentIndex(-1);
     QSqlQueryModel* model = RetrieveInformation();
@@ -254,5 +255,27 @@ void Mainscreen::on_sendInvite_clicked()
 {
     send_mail* sendinvitation = new send_mail();
     sendinvitation->exec();
+}
+
+
+void Mainscreen::on_pushButton_4_clicked()
+{
+    QAbstractItemModel* defaultModel = this->ui->tableView->model();
+    QString searchQuery= this->ui->lineEdit->text().toLower();
+    QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel(this);
+    proxyModel->setSourceModel(defaultModel);
+
+
+    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setFilterKeyColumn(0); // Filter all columns
+
+    proxyModel->setFilterFixedString(searchQuery);
+
+    this->ui->tableView->setModel(proxyModel);
+
+    if(this->ui->lineEdit->text().isEmpty()){
+        this->on_pushButton_3_clicked();
+    }
+
 }
 
