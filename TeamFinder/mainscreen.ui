@@ -242,6 +242,19 @@ background:transparent;
      <string>Search By Username</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="viewHistory">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>393</y>
+      <width>261</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>View History</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <resources/>

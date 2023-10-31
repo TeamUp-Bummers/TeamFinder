@@ -2,6 +2,7 @@
 #include "ui_send_mail.h"
 #include "mainscreen.h"
 #include "databaseQuery.h"
+#include "history.h"
 #include <Poco/Net/MailMessage.h>
 #include <Poco/Net/MailRecipient.h>
 #include <Poco/Net/SMTPClientSession.h>
@@ -66,6 +67,7 @@ void send_mail::on_sendInvite_clicked()
             session.sendMessage(message);
 
             QMessageBox::information(this,"Invitation","Mail Sent Successfully");
+            SaveLobbyData();
             this->close();
 
         }catch(Poco::Net::NetException &e){
@@ -77,6 +79,9 @@ void send_mail::on_sendInvite_clicked()
 
 
     delete credentials;
+
+
+
 
 }
 

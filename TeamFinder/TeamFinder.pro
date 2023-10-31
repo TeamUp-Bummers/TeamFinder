@@ -16,6 +16,7 @@ CONFIG += c++17
 SOURCES += \
     changepassword.cpp \
     databaseQuery.cpp \
+    history.cpp \
     main.cpp \
     mainscreen.cpp \
     mainwindow.cpp \
@@ -23,17 +24,20 @@ SOURCES += \
     safteyinspector.cpp \
     send_mail.cpp \
     userprofile.cpp \
+    viewhistory.cpp \
     viewprofile.cpp
 
 HEADERS += \
     changepassword.h \
     databaseQuery.h \
+    history.h \
     mainscreen.h \
     mainwindow.h \
     register.h \
     safteyinspector.h \
     send_mail.h \
     userprofile.h \
+    viewhistory.h \
     viewprofile.h
 
 FORMS += \
@@ -43,6 +47,7 @@ FORMS += \
     register.ui \
     send_mail.ui \
     userprofile.ui \
+    viewhistory.ui \
     viewprofile.ui
 
 # Default rules for deployment.

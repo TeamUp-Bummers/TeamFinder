@@ -3,7 +3,7 @@
 #include "ui_mainscreen.h"
 #include "databaseQuery.h"
 #include "viewprofile.h"
-
+#include "viewhistory.h"
 #include "send_mail.h"
 
 int usercount = 0;
@@ -72,7 +72,6 @@ void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
     this->ui->tableView->verticalHeader()->hide();
     this->ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
-
     this->ui->tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
 
 
@@ -280,5 +279,12 @@ void Mainscreen::on_lineEdit_textChanged(const QString &arg1)
 
     }
 
+}
+
+
+void Mainscreen::on_viewHistory_clicked()
+{
+    ViewHistory* viewhistory = new ViewHistory();
+    viewhistory->show();
 }
 

@@ -55,6 +55,8 @@ private slots:
 
     void on_lineEdit_textChanged(const QString &arg1);
 
+    void on_viewHistory_clicked();
+
 private:
     Ui::Mainscreen *ui;
     QAbstractItemModel* working_model;

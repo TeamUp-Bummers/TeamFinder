@@ -182,7 +182,7 @@ QSqlQueryModel* RetrieveInformation()
     QSqlQueryModel* model = new QSqlQueryModel();
     query.prepare("SELECT username,game_name,game_rank,playtime FROM teamfinder.profile_data WHERE"
                   " NOT (game_name is NULL OR game_rank is NULL or playtime is NULL or profile_description is NULL OR playtime is NULL or email is NULL)"
-                  " AND username<>(:username) ORDER BY RAND() LIMIT 10");
+                  " AND username<>(:username) ORDER BY RAND()");
     query.bindValue(":username",CurrentUser);
     query.exec();
     if(query.next()){
@@ -202,7 +202,7 @@ QSqlQueryModel* Filter(const QString& game,const QString& rank){
     QString query_isValidCondition= " WHERE NOT (game_name is NULL OR game_rank is NULL or playtime is NULL or profile_description is NULL OR playtime is NULL or email is NULL) AND username<>(:username) ";
     QString query_gamefilter= " AND game_name=(:game)";
     QString query_rankfilter =" AND game_rank=(:rank)";
-    QString query_limit = " ORDER BY RAND() LIMIT 10";
+    QString query_limit = " ORDER BY RAND()";
     if(rank.isEmpty()){
         query.prepare(query_select+query_isValidCondition+query_gamefilter+query_limit);
     }else{
