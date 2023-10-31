@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "userprofile.h"
+#include <QAbstractItemModel>
 
 struct LobbyData{
     QString username;
@@ -19,6 +20,7 @@ class Mainscreen : public QMainWindow
     Q_OBJECT
 
 public:
+
     explicit Mainscreen(QWidget *parent = nullptr);
     ~Mainscreen();
 protected:
@@ -49,10 +51,13 @@ private slots:
 
     void on_sendInvite_clicked();
 
-    void on_pushButton_4_clicked();
+
+
+    void on_lineEdit_textChanged(const QString &arg1);
 
 private:
     Ui::Mainscreen *ui;
+    QAbstractItemModel* working_model;
 };
 
 #endif // MAINSCREEN_H

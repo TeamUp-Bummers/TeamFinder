@@ -91,7 +91,9 @@ void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
          this->ui->tableView->setSortingEnabled(true);
 
 
+
     }
+    this->working_model = model;
    QMainWindow::showEvent(event);
 
 }
@@ -127,6 +129,7 @@ void Mainscreen::on_pushButton_3_clicked()
     QSortFilterProxyModel* sortedModel = getSortedModel(model);
     this->ui->tableView->setModel(sortedModel);
     this->ui->tableView->setSortingEnabled(true);
+    this->working_model = model;
 
 
 
@@ -145,6 +148,9 @@ void Mainscreen::on_game_currentTextChanged(const QString &arg1)
     this->ui->tableView->setSortingEnabled(true);
 
 
+    this->working_model = model;
+
+
 
 }
 
@@ -153,9 +159,11 @@ void Mainscreen::on_rank_currentTextChanged(const QString &arg1)
 {
     QSqlQueryModel* model = Filter(this->ui->game->currentText(),arg1);
     QSortFilterProxyModel* sortedModel = getSortedModel(model);
+
     this->ui->tableView->setModel(sortedModel);
     this->ui->tableView->setSortingEnabled(true);
 
+    this->working_model = model;
 }
 
 
@@ -258,23 +266,18 @@ void Mainscreen::on_sendInvite_clicked()
 }
 
 
-void Mainscreen::on_pushButton_4_clicked()
+
+void Mainscreen::on_lineEdit_textChanged(const QString &arg1)
 {
-    QAbstractItemModel* defaultModel = this->ui->tableView->model();
-    QString searchQuery= this->ui->lineEdit->text().toLower();
-    QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel(this);
-    proxyModel->setSourceModel(defaultModel);
 
 
-    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-    proxyModel->setFilterKeyColumn(0); // Filter all columns
+    if(arg1.isEmpty()){
+        this->ui->tableView->setModel(this->working_model);
+    }else{
+        QSortFilterProxyModel* model = FilterByName(this->working_model,arg1);
+        model->setParent(this);
+        this->ui->tableView->setModel(model);
 
-    proxyModel->setFilterFixedString(searchQuery);
-
-    this->ui->tableView->setModel(proxyModel);
-
-    if(this->ui->lineEdit->text().isEmpty()){
-        this->on_pushButton_3_clicked();
     }
 
 }

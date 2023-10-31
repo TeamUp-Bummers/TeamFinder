@@ -104,3 +104,22 @@ QString HashFunction(const QString& password){
 
 
 
+
+
+
+
+
+
+
+QSortFilterProxyModel *FilterByName(QAbstractItemModel *model, const QString &searchFilter)
+{
+
+    QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel;
+    proxyModel->setSourceModel(model);
+    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setFilterKeyColumn(0);
+    proxyModel->setFilterFixedString(searchFilter);
+
+    return proxyModel;
+
+}
