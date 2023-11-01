@@ -64,3 +64,39 @@ void changePassword::on_pushButton_2_clicked()
 
 
 
+
+void changePassword::on_passwordView_clicked()
+{
+    switch(this->ui->lineEdit->echoMode()){
+    case (QLineEdit::Password):
+        this->ui->lineEdit->setEchoMode(QLineEdit::Normal);
+        break;
+    default:
+        this->ui->lineEdit->setEchoMode(QLineEdit::Password);
+    }
+}
+
+
+void changePassword::on_passwordView_2_clicked()
+{
+    switch(this->ui->lineEdit_2->echoMode()){
+    case (QLineEdit::Password):
+        this->ui->lineEdit_2->setEchoMode(QLineEdit::Normal);
+        break;
+    default:
+        this->ui->lineEdit_2->setEchoMode(QLineEdit::Password);
+    }
+}
+
+
+void changePassword::on_passwordView_3_clicked()
+{
+    switch(this->ui->lineEdit_3->echoMode()){
+    case (QLineEdit::Password):
+        this->ui->lineEdit_3->setEchoMode(QLineEdit::Normal);
+        break;
+    default:
+        this->ui->lineEdit_3->setEchoMode(QLineEdit::Password);
+    }
+}
+

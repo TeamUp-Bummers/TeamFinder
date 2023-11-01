@@ -64,3 +64,31 @@ void Register::on_pushButton_clicked()
 
 }
 
+
+void Register::on_passwordView_clicked()
+{
+    switch(this->ui->password->echoMode()){
+    case (QLineEdit::Password):
+            this->ui->password->setEchoMode(QLineEdit::Normal);
+            break;
+    default:
+            this->ui->password->setEchoMode(QLineEdit::Password);
+    }
+
+
+}
+
+
+
+void Register::on_confirmPasswordView_clicked()
+{
+    switch(this->ui->confirm_password->echoMode()){
+    case (QLineEdit::Password):
+            this->ui->confirm_password->setEchoMode(QLineEdit::Normal);
+            break;
+    default:
+            this->ui->confirm_password->setEchoMode(QLineEdit::Password);
+    }
+
+}
+

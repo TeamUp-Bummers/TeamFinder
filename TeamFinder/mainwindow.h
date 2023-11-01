@@ -25,6 +25,13 @@ private slots:
 
     void on_Register_clicked();
 
+
+
+
+
+    void on_pushButton_2_clicked();
+
+
 private:
     Ui::MainWindow *ui;
 };

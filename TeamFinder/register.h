@@ -22,6 +22,10 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_passwordView_clicked();
+
+    void on_confirmPasswordView_clicked();
+
 private:
     Ui::Register *ui;
 };

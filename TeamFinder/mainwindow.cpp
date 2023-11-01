@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "datahandler.h"
 #include "ui_mainwindow.h"
-
+#include <QLineEdit>
 
 QString CurrentUser;
 
@@ -49,4 +49,25 @@ void MainWindow::on_Register_clicked()
     Register *register_screen = new Register();
     register_screen->show();
 }
+
+
+
+
+
+
+
+void MainWindow::on_pushButton_2_clicked()
+{
+
+    switch(this->ui->password->echoMode()){
+    case (QLineEdit::Password):
+        this->ui->password->setEchoMode(QLineEdit::Normal);
+        break;
+    default:
+        this->ui->password->setEchoMode(QLineEdit::Password);
+    }
+
+}
+
+
 
