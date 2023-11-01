@@ -1,6 +1,6 @@
 #include "viewprofile.h"
 #include "ui_viewprofile.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 
 
 

@@ -1,6 +1,6 @@
 #include "userprofile.h"
 #include "ui_userprofile.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 #include "mainscreen.h"
 #include <QString>
 #include <fstream>
@@ -75,7 +75,7 @@ void UserProfile::on_ProfileSave_clicked()
     bool canExit = true;
 
     bool isUnfilled = (current_game.isEmpty() || rank_id.isEmpty() || profile_description.isEmpty() || playtime.isEmpty()|| user_email.isEmpty());
-    qDebug() << isUnfilled;
+
 
     if(isUnfilled){
         QMessageBox::information(this,"Information","You Wont Be Listed To Other Users, Until You Fill up Your Profile");

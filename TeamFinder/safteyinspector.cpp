@@ -1,5 +1,5 @@
 #include "safteyinspector.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 #include <regex>
 #include <iomanip>
 #include <openssl/sha.h>
@@ -10,7 +10,7 @@
 // Check if Username Exists in The Database
 bool UserNameMatches(const QString& username){
 
-    QString query_username = retrieveUserName(username);
+    QString query_username = RetrieveUserNameIfExists(username);
     return (query_username == username)? true : false;
 };
 // Make Login
@@ -101,25 +101,3 @@ QString HashFunction(const QString& password){
 };
 
 
-
-
-
-
-
-
-
-
-
-
-QSortFilterProxyModel *FilterByName(QAbstractItemModel *model, const QString &searchFilter)
-{
-
-    QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel;
-    proxyModel->setSourceModel(model);
-    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
-    proxyModel->setFilterKeyColumn(0);
-    proxyModel->setFilterFixedString(searchFilter);
-
-    return proxyModel;
-
-}

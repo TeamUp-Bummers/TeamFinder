@@ -1,14 +1,16 @@
-#ifndef DATABASEQUERY_H
-#define DATABASEQUERY_H
+#ifndef DATAHANDLER_H
+#define DATAHANDLER_H
 
 #include <QtDebug>
 #include <QtSql>
 #include <QtSql/QSqlDatabase>
 #include <QString>
 #include <QMessageBox>
+#include <QSortFilterProxyModel>
 #include "safteyinspector.h"
 
 extern QString CurrentUser;
+
 
 
 
@@ -24,9 +26,9 @@ struct ProfileData{
 ProfileData* RetrieveData(const QString& username);
 QSqlQueryModel* RetrieveInformation();
 QSqlQueryModel* Filter(const QString& game,const QString& rank="");
-QString getParticularData(const QString& string,const QString& username);
-Login_Status Login(const QString&,const QString&);
-QString retrieveUserName(const QString& username);
+QString GetSpecificProfileData(const QString& string,const QString& username);
+
+QString RetrieveUserNameIfExists(const QString& username);
 QStringList RetrieveRanks(const QString& game);
 
 bool passwordMatch(const QString& username,const QString& password);
@@ -38,5 +40,8 @@ void updatePassword(const QString& password);
 void  UpdateUserName(const QString& username);
 void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime,const QString& discord_tag,const QString& email);
 
+QSortFilterProxyModel* FilterByName(QAbstractItemModel* model,const QString& searchFilter);
 
-#endif // DATABASEQUERY_H
+
+
+#endif // DATAHANDLER_H

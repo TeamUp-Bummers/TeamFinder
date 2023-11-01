@@ -1,7 +1,7 @@
 #include "mainscreen.h"
 #include "mainwindow.h"
 #include "ui_mainscreen.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 #include "viewprofile.h"
 #include "viewhistory.h"
 #include "send_mail.h"
@@ -24,7 +24,7 @@ bool isAlreadyAdded(const QString& username){
     }
     return false;
 
-};
+}
 
 void RemovePlayer(const QString& username){
     for(int i=0;i<usercount;i++){
@@ -188,7 +188,7 @@ void Mainscreen::on_addToParty_clicked()
                 QAbstractItemModel* model = this->ui->tableView->model();
                 QModelIndex usernameIndex = model->index(selectedRow.row(),0);
                 QString username = this->ui->tableView->model()->data(usernameIndex).toString();
-                QString email = getParticularData("email",username);
+                QString email = GetSpecificProfileData("email",username);
                 if(!isAlreadyAdded(username)){
                     int rowCount = this->ui->tableWidget->rowCount();
                     this->ui->tableWidget->insertRow(rowCount);
@@ -227,7 +227,7 @@ void Mainscreen::on_tableWidget_doubleClicked()
     ViewProfile* viewprofile = new ViewProfile(username->text());
     viewprofile->show();
     this->ui->tableWidget->selectionModel()->clear();
-    qDebug() << usercount;
+
 }
 
 

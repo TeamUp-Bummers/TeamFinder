@@ -1,5 +1,5 @@
 #define YAML_CPP_DLL
-#include "databaseQuery.h"
+#include "datahandler.h"
 #include <fstream>
 #include <string>
 #include <yaml-cpp/yaml.h>
@@ -42,7 +42,7 @@ void connectDatabase(){
 }
 
 
-QString retrieveUserName(const QString& username){
+QString RetrieveUserNameIfExists(const QString& username){
     QSqlQuery query;
     QString result;
     query.prepare("Select username From teamfinder.users WHERE username=(:username)");
@@ -144,7 +144,6 @@ void UpdateProfile(const QString& game, const QString& rank, const QString& prof
                   "ON DUPLICATE KEY UPDATE "
                   " game_name=(:game_name),game_rank=(:game_rank),profile_description=(:profile_description),playtime=(:playtime),discord_tag=(:discord_tag),email=(:email)"
                   );
-    qDebug() << CurrentUser << profile_description << game << rank << playtime;
     query.bindValue(":username",CurrentUser);
     query.bindValue(":profile_description",profile_description);
     query.bindValue(":game_name",game);
@@ -212,12 +211,12 @@ QSqlQueryModel* Filter(const QString& game,const QString& rank){
     query.bindValue(":username",CurrentUser);
    query.bindValue(":game",game);
     query.exec();
-   qDebug() << query.lastError();
+
     model->setQuery(query);
     return model;
 }
 
-QString  getParticularData(const QString &string,const QString& username)
+QString  GetSpecificProfileData(const QString &string,const QString& username)
 {
     QString select_statement = "SELECT " + string +" FROM teamfinder.profile_data";
     QString condition = " WHERE username=(:username)";
@@ -231,5 +230,20 @@ QString  getParticularData(const QString &string,const QString& username)
 
 
 }
+
+
+QSortFilterProxyModel *FilterByName(QAbstractItemModel *model, const QString &searchFilter)
+{
+
+    QSortFilterProxyModel* proxyModel = new QSortFilterProxyModel;
+    proxyModel->setSourceModel(model);
+    proxyModel->setFilterCaseSensitivity(Qt::CaseInsensitive);
+    proxyModel->setFilterKeyColumn(0);
+    proxyModel->setFilterFixedString(searchFilter);
+
+    return proxyModel;
+
+}
+
 
 

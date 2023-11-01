@@ -1,6 +1,6 @@
 #include "changepassword.h"
 #include "ui_changepassword.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 
 changePassword::changePassword(QWidget *parent) :
     QDialog(parent),

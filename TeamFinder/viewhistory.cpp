@@ -22,7 +22,7 @@ void ViewHistory::UpdateTableData()
     //-------------------------------------------------------------//
 
     QMap<QString, QVector<PlayerData>> lobbies = RetrieveLobbyHistory();
-    qDebug() << lobbies.size();
+
     if(!(lobbies.empty())){
 
         if(this->index >=0 && this->index < lobbies.size()){

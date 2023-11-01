@@ -15,7 +15,7 @@ CONFIG += c++17
 
 SOURCES += \
     changepassword.cpp \
-    databaseQuery.cpp \
+    datahandler.cpp \
     history.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -29,7 +29,7 @@ SOURCES += \
 
 HEADERS += \
     changepassword.h \
-    databaseQuery.h \
+    datahandler.h \
     history.h \
     mainscreen.h \
     mainwindow.h \

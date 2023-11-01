@@ -19,7 +19,6 @@ extern QString CurrentUser;
 void SaveLobbyData()
 {
      QString timestamp = QDateTime::currentDateTime().toString("yyyyMMddhhmmss");
-     qDebug() << timestamp;
      QFile file("lobbyHistory_"+CurrentUser+".csv");
      if(file.open(QIODevice::WriteOnly | QIODevice::Text |QIODevice::Append)){
 
@@ -30,7 +29,7 @@ void SaveLobbyData()
           }
 
      }else{
-         qDebug() << "Could Not Open History File";
+          qDebug() << "Could Not Open History File !";
      }
 }
 

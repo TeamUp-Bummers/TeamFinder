@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "register.h"
 #include "ui_register.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 #include "safteyinspector.h"
 
 

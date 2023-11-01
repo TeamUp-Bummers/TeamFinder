@@ -1,7 +1,7 @@
 #include "send_mail.h"
 #include "ui_send_mail.h"
 #include "mainscreen.h"
-#include "databaseQuery.h"
+#include "datahandler.h"
 #include "history.h"
 #include <Poco/Net/MailMessage.h>
 #include <Poco/Net/MailRecipient.h>
@@ -52,7 +52,7 @@ void send_mail::on_sendInvite_clicked()
 
     bool isEmpty = (content.isEmpty() || email.isEmpty() || subject.isEmpty());
     if(!isEmpty){
-        qDebug() << "First Part Complete";
+
         try{
             Poco::Net::MailMessage message;
             message.setSender(email.toStdString());
@@ -71,7 +71,8 @@ void send_mail::on_sendInvite_clicked()
             this->close();
 
         }catch(Poco::Net::NetException &e){
-            qDebug() << "Error :" << e.displayText();
+            QString error_message = QString::fromStdString(e.displayText());
+            QMessageBox::information(this,"Information",error_message);
         }
     }else{
         QMessageBox::information(this,"Information","Fill Up Every Box Before Sending Mail");
@@ -93,7 +94,7 @@ void send_mail::showEvent(QShowEvent *event)
     for(int i=0;i<usercount;i++){
         this->ui->listWidget->addItem(user_lobby[i].email);
     }
-    this->ui->email->setText(getParticularData("email",CurrentUser));
+    this->ui->email->setText(GetSpecificProfileData("email",CurrentUser));
 
 
     QDialog::showEvent(event);

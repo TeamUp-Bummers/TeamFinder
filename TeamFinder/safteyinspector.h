@@ -2,7 +2,7 @@
 #define SAFTEYINSPECTOR_H
 #include <QString>
 #include <string>
-#include <QSortFilterProxyModel>
+
 
 
 enum Registration_Status{
@@ -20,7 +20,7 @@ enum Login_Status{
 
 
 
-
+Login_Status Login(const QString&,const QString&);
 bool isValidPassword(const QString& password);
 bool passwordMatches(const QString& password,const QString& confirm_password);
 Registration_Status MakeRegistration(const QString&,const QString&,const QString&);
@@ -28,8 +28,6 @@ QString HashFunction(const QString& password);
 QString GenerateSalt();
 bool UserNameMatches(const QString&);
 
-
-QSortFilterProxyModel* FilterByName(QAbstractItemModel* model,const QString& searchFilter);
 
 
 
