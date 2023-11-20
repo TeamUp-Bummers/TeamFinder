@@ -63,6 +63,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 #---------------OpenSSL--------------------------------#
 
 win32: LIBS += -L$$PWD/libs/OpenSSL/ -llibcrypto
+macx: LIBS += -L$$PWD/libs/OpenSSL/ -lcrypto
 
 INCLUDEPATH += $$PWD/libs/OpenSSL/include
 DEPENDPATH += $$PWD/libs/OpenSSL/include
@@ -70,6 +71,9 @@ DEPENDPATH += $$PWD/libs/OpenSSL/include
 
 
 win32: LIBS += -L$$PWD/libs/OpenSSL/ -llibssl
+macx: LIBS += -L$$PWD/libs/OpenSSL/ -lssl
+
+
 
 INCLUDEPATH += $$PWD/libs/OpenSSL/include
 DEPENDPATH += $$PWD/libs/OpenSSL/include
@@ -79,6 +83,7 @@ DEPENDPATH += $$PWD/libs/OpenSSL/include
 
 
 win32: LIBS += -L$$PWD/libs/Yaml/ -lyaml-cppd
+macx: LIBS += -L$$PWD/libs/Yaml/ -lyaml-cpp
 
 INCLUDEPATH += $$PWD/libs/Yaml/include
 DEPENDPATH += $$PWD/libs/Yaml/include
@@ -93,6 +98,8 @@ DEPENDPATH += $$PWD/libs/Yaml/include
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoFoundation
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoFoundationd
 
+macx: LIBS += -L$$PWD/libs/Poco/ -lPocoFoundation
+
 INCLUDEPATH += $$PWD/libs/Poco/Foundation/include
 DEPENDPATH += $$PWD/libs/Poco/Foundation/include
 
@@ -103,16 +110,25 @@ DEPENDPATH += $$PWD/libs/Poco/Foundation/include
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoNet
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoNetd
 
+macx: LIBS += -L$$PWD/libs/Poco/ -lPocoNet
+
 INCLUDEPATH += $$PWD/libs/Poco/Net/include
 DEPENDPATH += $$PWD/libs/Poco/Net/include
 
 #-----------------------------------------------
 
-
-
-
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoUtil
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/libs/Poco/ -lPocoUtild
+macx: LIBS += -L$$PWD/libs/Poco/ -lPocoUtil
 
 INCLUDEPATH += $$PWD/libs/Poco/Util/include
 DEPENDPATH += $$PWD/libs/Poco/Util/include
+
+
+
+
+
+
+
+
+
