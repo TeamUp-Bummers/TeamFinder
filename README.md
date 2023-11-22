@@ -7,7 +7,6 @@ Application for finding players with similar interests.
 ### Project Structure
 
 - **TeamFinder**
-  - **Source**
     - source files
     - header files
     - **Libs**
