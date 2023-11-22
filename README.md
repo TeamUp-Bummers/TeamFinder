@@ -6,23 +6,23 @@ Application for finding players with similar interests.
 # Quickstart
 ### Project Structure
 
-- [**TeamFinder**]
-  - [**Source**]
-    - [source files]
-    - [header files ]
-    - [**Libs**]
-      - [Library1]
-        - [include/]
-        - [library_file]
-      - [Library2]
-        - [include/]
-        - [library_file]
+- **TeamFinder**
+  - **Source**
+    - source files
+    - header files
+    - **Libs**
+      - Library1
+        - include/
+        - library_file
+      - Library2
+        - include/
+        - library_file
 
-- [**Docs**]
-  - [Proposal.pdf]
-  - [Proposal.docx]
+- **Docs**
+  - Proposal.pdf
+  - Proposal.docx
 
-- [**Readme.md**]
+- **Readme.md**
 
 
 
