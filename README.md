@@ -31,7 +31,7 @@ Application for finding players with similar interests.
 
 ### Libraries Required
 - [QT](https://github.com/qt)<br/>
-- [QTMYSQLDriver 6.5.2](https://github.com/thecodemonkey86/qt_mysql_driver)<br/>
+- [QTMYSQLDriver 6.5.2 - For Windows](https://github.com/thecodemonkey86/qt_mysql_driver)<br/>
 - [Poco](https://github.com/pocoproject/poco)<br/>
 - [Yaml-Parser](https://github.com/jbeder/yaml-cpp)<br/>
 #### Steps
