@@ -23,6 +23,24 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:green;
+border:20px black;
+padding:5px;
+}
+QPushButton:pressed{
+background-color:red;
+border:1px black;
+padding:5px;
+}
+</string>
+    </property>
     <property name="text">
      <string>Login</string>
     </property>
@@ -36,8 +54,29 @@
       <height>41</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+background-color:green;
+border:1px black;
+padding:5px;
+}
+QPushButton:pressed{
+background-color:red;
+border:1px black;
+padding:5px;
+}
+</string>
+    </property>
     <property name="text">
      <string>Register</string>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label">
@@ -48,6 +87,13 @@
       <width>381</width>
       <height>51</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Tw Cen MT Condensed</family>
+      <pointsize>24</pointsize>
+      <underline>true</underline>
+     </font>
     </property>
     <property name="text">
      <string>Team Finder</string>
@@ -65,6 +111,12 @@
       <height>16</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+      <underline>true</underline>
+     </font>
+    </property>
     <property name="text">
      <string>Username</string>
     </property>
@@ -77,6 +129,12 @@
       <width>71</width>
       <height>16</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <bold>true</bold>
+      <underline>true</underline>
+     </font>
     </property>
     <property name="text">
      <string>Password</string>

@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog{
+background-color:grey-blue;
+}</string>
+  </property>
   <widget class="QPushButton" name="sendInvite">
    <property name="geometry">
     <rect>
@@ -36,19 +41,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>81</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Your Email</string>
-   </property>
-  </widget>
   <widget class="QTextEdit" name="message">
    <property name="geometry">
     <rect>
@@ -67,6 +59,11 @@
      <width>101</width>
      <height>16</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
    </property>
    <property name="text">
     <string>Message</string>
@@ -91,6 +88,11 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
     <string>Recievers</string>
    </property>
@@ -114,8 +116,31 @@
      <height>16</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
    <property name="text">
     <string>Subject</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_6">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>10</y>
+     <width>49</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="text">
+    <string>Email</string>
    </property>
   </widget>
  </widget>
