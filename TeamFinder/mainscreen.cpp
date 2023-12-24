@@ -50,6 +50,7 @@ Mainscreen::~Mainscreen()
 
 void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 {
+
     if(usercount == 0){
         this->ui->deleteUser->setDisabled(true);
         this->ui->sendInvite->setDisabled(true);

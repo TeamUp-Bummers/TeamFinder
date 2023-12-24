@@ -7,36 +7,38 @@
     <x>0</x>
     <y>0</y>
     <width>292</width>
-    <height>389</height>
+    <height>480</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
     <width>292</width>
-    <height>389</height>
+    <height>480</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>292</width>
-    <height>389</height>
+    <height>480</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Teamfinder</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">backgound:white;
-background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(60, 152, 172, 255), stop:1 rgba(175, 126, 151, 255));</string>
+   <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="styleSheet">
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(99, 198, 214, 255), stop:1 rgba(174, 204, 166, 255));</string>
+   </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
       <x>0</x>
       <y>0</y>
       <width>331</width>
-      <height>411</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -52,9 +54,9 @@ background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgb
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>-50</x>
-       <y>10</y>
-       <width>381</width>
+       <x>0</x>
+       <y>0</y>
+       <width>291</width>
        <height>51</height>
       </rect>
      </property>
@@ -82,16 +84,16 @@ color:white;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>90</y>
+       <y>200</y>
        <width>91</width>
        <height>20</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Lobster Two</family>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
        <underline>false</underline>
       </font>
      </property>
@@ -107,16 +109,16 @@ color:white;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>170</y>
+       <y>280</y>
        <width>71</width>
        <height>20</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Lobster Two</family>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
        <underline>false</underline>
       </font>
      </property>
@@ -132,10 +134,15 @@ color:white;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>200</y>
+       <y>310</y>
        <width>251</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">border:none;
@@ -153,10 +160,15 @@ color:white;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>120</y>
+       <y>230</y>
        <width>251</width>
        <height>24</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">border:none;
@@ -171,14 +183,16 @@ color:white;</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>260</y>
+       <y>380</y>
        <width>251</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <bold>true</bold>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -189,7 +203,14 @@ color:black;
 
 }
 
-</string>
+QPushButton:hover {
+    background-color: lightgray;
+}
+
+QPushButton:pressed {
+    background-color: gray;
+
+}</string>
      </property>
      <property name="text">
       <string>Login</string>
@@ -199,14 +220,16 @@ color:black;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>320</y>
+       <y>430</y>
        <width>251</width>
        <height>31</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <bold>true</bold>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -216,7 +239,14 @@ border-radius:15px;
 color:black;
 padding:5px;
 }
+QPushButton:hover {
+    background-color: lightgray;
+}
 
+QPushButton:pressed {
+    background-color: gray;
+
+}
 
 </string>
      </property>
@@ -231,7 +261,7 @@ padding:5px;
      <property name="geometry">
       <rect>
        <x>250</x>
-       <y>200</y>
+       <y>310</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -248,9 +278,36 @@ pointer-events:click;</string>
       <string>👁</string>
      </property>
     </widget>
+    <widget class="QLabel" name="image">
+     <property name="geometry">
+      <rect>
+       <x>110</x>
+       <y>80</y>
+       <width>71</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+     <property name="pixmap">
+      <pixmap resource="Images.qrc">:/images/rsc/login-image.png</pixmap>
+     </property>
+     <property name="scaledContents">
+      <bool>true</bool>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="Images.qrc"/>
+ </resources>
  <connections/>
 </ui>

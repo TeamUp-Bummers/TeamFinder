@@ -124,6 +124,9 @@ macx: LIBS += -L$$PWD/libs/Poco/ -lPocoUtil
 INCLUDEPATH += $$PWD/libs/Poco/Util/include
 DEPENDPATH += $$PWD/libs/Poco/Util/include
 
+RESOURCES += \
+    Images.qrc
+
 
 
 
