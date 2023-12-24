@@ -10,6 +10,10 @@ Register::Register(QWidget *parent) :
     ui(new Ui::Register)
 {
     ui->setupUi(this);
+    this->ui->pushButton->setCursor(Qt::PointingHandCursor);
+    this->ui->confirmPasswordView->setCursor(Qt::PointingHandCursor);
+    this->ui->passwordView->setCursor(Qt::PointingHandCursor);
+    this->ui->pushButton_2->setCursor(Qt::PointingHandCursor);
 }
 
 Register::~Register()
@@ -19,15 +23,9 @@ Register::~Register()
 
 void Register::on_pushButton_2_clicked()
 {
-    QMessageBox::StandardButton reply;
-    reply = QMessageBox::question(this,"Cancel","Are You Sure,You Want to stop registration ?",QMessageBox::Yes|QMessageBox::No);
-    if(reply == QMessageBox::Yes){
-            this->close();
-        MainWindow* mainwindow = new MainWindow();
-            mainwindow->show();
-    }
-
-
+    this->close();
+    MainWindow* mainwindow = new MainWindow();
+    mainwindow->show();
 }
 
 
