@@ -5,6 +5,8 @@
 #include <QString>
 #include <fstream>
 #include <vector>
+#include <QMessageBox>
+#include <QCloseEvent>
 
 
 UserProfile::UserProfile(QWidget *parent) :
@@ -39,7 +41,18 @@ void UserProfile::showEvent(QShowEvent *event){
     QMainWindow::showEvent(event);
 }
 
+void UserProfile::closeEvent(QCloseEvent *event){
 
+    int result = QMessageBox::question(this,"Confirmation","Are You Sure , You want to close this window. Your Changes will not be Saved !",QMessageBox::Yes|QMessageBox::No);
+    if(result == QMessageBox::Yes){
+        event->accept();
+        Mainscreen* mainscreen = new Mainscreen();
+        mainscreen->show();
+    }else{
+        event->ignore();
+    }
+
+}
 
 
 
@@ -104,13 +117,5 @@ void UserProfile::on_ProfileSave_clicked()
 
 
 
-void UserProfile::on_CancelOut_clicked()
-{
-    Mainscreen* mainscreen = new Mainscreen();
-    this->close();
 
-    mainscreen->show();
-
-
-}
 

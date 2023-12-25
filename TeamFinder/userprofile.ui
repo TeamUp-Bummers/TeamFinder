@@ -6,246 +6,425 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>771</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">
+*{background-image: url(:/images/rsc/backgrnd.png);
+	background-position:center center;
+background-repeat:no-repeat;
+ background-attachment: fixed;
+ background-size: cover;
+color:white;
+font-family:&quot;poppins&quot;;
+}
+QMessageBox{
+	background:none;
+	color:black;
+}
+QMessageBox QLabel{
+	background:none;
+	color:black;
+
+}
+QMessageBox QPushButton{
+	color:black;
+	background:white;
+}
+
+
+
+
+</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="ProfileSave">
-    <property name="geometry">
-     <rect>
-      <x>550</x>
-      <y>480</y>
-      <width>221</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Save Profile</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="CancelOut">
-    <property name="geometry">
-     <rect>
-      <x>280</x>
-      <y>480</y>
-      <width>221</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Cancel</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="ProfileDescription">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>220</y>
-      <width>531</width>
-      <height>111</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>190</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Profile Description</string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="GameID">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>220</y>
-      <width>201</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string>Game </string>
-    </property>
-   </widget>
-   <widget class="QComboBox" name="RankID">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>300</y>
-      <width>201</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="placeholderText">
-     <string> Rank</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>370</y>
-      <width>141</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Total Playtime (in Hours)</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="username">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>80</y>
-      <width>231</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_3">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>10</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Profile</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_4">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>60</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Username</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton">
-    <property name="geometry">
-     <rect>
-      <x>460</x>
-      <y>80</y>
-      <width>231</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Change Password</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Game">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>200</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Select Game</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="Rank">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>280</y>
-      <width>111</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Select Rank</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="playtime">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>400</y>
-      <width>191</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="discord_tag">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>400</y>
-      <width>171</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_5">
-    <property name="geometry">
-     <rect>
-      <x>240</x>
-      <y>370</y>
-      <width>141</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Discord Tag</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="contact_link">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>400</y>
-      <width>341</width>
-      <height>31</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="label_6">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>370</y>
-      <width>141</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Other Contact Link</string>
-    </property>
-   </widget>
-  </widget>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>22</height>
-    </rect>
+   <property name="styleSheet">
+    <string notr="true"/>
    </property>
+   <widget class="QFrame" name="frame">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>741</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background:none;
+background-color:rgba(0,0,0,.8);
+border-radius:5px;</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>-60</x>
+       <y>10</y>
+       <width>801</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>14</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">
+
+background:none;
+</string>
+     </property>
+     <property name="text">
+      <string>User Profile</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>70</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Username</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="username">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>231</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+background:none;
+background:transparent;
+border:1px solid gray;
+border-radius:5px;
+
+}
+QLineEdit:focus{
+	border-color:#fff;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QTextEdit" name="ProfileDescription">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>260</y>
+       <width>691</width>
+       <height>131</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QTextEdit{
+background:none;
+background:transparent;
+border:1px solid gray;
+border-radius:5px;
+}
+QTextEdit:focus{
+	border-color:#fff;
+}</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>240</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Profile Description</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="playtime">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>190</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+background:none;
+background:transparent;
+border:1px solid gray;
+border-radius:5px;
+
+}
+QLineEdit:focus{
+	border-color:#fff;
+}</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="discord_tag">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>420</y>
+       <width>261</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+background:none;
+background:transparent;
+border:1px solid gray;
+border-radius:5px;
+
+}
+QLineEdit:focus{
+	border-color:#fff;
+}</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_2">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>170</y>
+       <width>151</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Total Playtime (in Hours)</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="contact_link">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>420</y>
+       <width>411</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QLineEdit{
+background:none;
+background:transparent;
+border:1px solid gray;
+border-radius:5px;
+
+}
+QLineEdit:focus{
+	border-color:#fff;
+}</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton">
+     <property name="geometry">
+      <rect>
+       <x>520</x>
+       <y>100</y>
+       <width>191</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background:#fff;
+border-radius:5px;
+color:black;
+
+}
+
+QPushButton:hover {
+    background-color: lightgray;
+}
+
+QPushButton:pressed {
+    background-color: gray;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Change Password</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>400</y>
+       <width>141</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Discord Tag</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_6">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>400</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Contact Link</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="RankID">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>190</y>
+       <width>211</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;
+border:1px solid gray;
+border-radius:5px;</string>
+     </property>
+     <property name="placeholderText">
+      <string> Rank</string>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="GameID">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>190</y>
+       <width>231</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:transparent;
+border:1px solid gray;
+border-radius:5px;</string>
+     </property>
+     <property name="placeholderText">
+      <string>Game </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="ProfileSave">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>470</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background:#fff;
+border-radius:5px;
+color:black;
+
+}
+
+QPushButton:hover {
+    background-color: lightgray;
+}
+
+QPushButton:pressed {
+    background-color: gray;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Save Profile</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Game">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>170</y>
+       <width>111</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Select Game</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="Rank">
+     <property name="geometry">
+      <rect>
+       <x>280</x>
+       <y>170</y>
+       <width>211</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;</string>
+     </property>
+     <property name="text">
+      <string>Select Rank</string>
+     </property>
+    </widget>
+   </widget>
   </widget>
  </widget>
  <resources/>

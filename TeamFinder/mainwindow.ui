@@ -30,7 +30,7 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(99, 198, 214, 255), stop:1 rgba(174, 204, 166, 255));</string>
+    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0.943, y2:0.75, stop:0.153409 rgba(52, 148, 139, 255), stop:0.625 rgba(92, 170, 130, 255));</string>
    </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
@@ -42,8 +42,7 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(0,0,0,.7);
-</string>
+     <string notr="true">background-color:rgba(0,0,0,.7)</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
