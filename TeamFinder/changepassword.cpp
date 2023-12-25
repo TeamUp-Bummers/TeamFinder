@@ -7,6 +7,7 @@ changePassword::changePassword(QWidget *parent) :
     ui(new Ui::changePassword)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Teamfinder : Change Password");
 }
 
 changePassword::~changePassword()

@@ -71,6 +71,9 @@ ViewHistory::ViewHistory(QWidget *parent) :
     ui(new Ui::ViewHistory)
 {
     ui->setupUi(this);
+    this->ui->tableWidget->setShowGrid(false);
+    this->ui->tableWidget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    this->ui->tableWidget->horizontalHeader()->setDefaultAlignment(Qt::AlignBaseline);
 }
 
 ViewHistory::~ViewHistory()

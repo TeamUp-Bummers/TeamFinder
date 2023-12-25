@@ -51,6 +51,7 @@ Mainscreen::~Mainscreen()
 void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 {
 
+
     if(usercount == 0){
         this->ui->deleteUser->setDisabled(true);
         this->ui->sendInvite->setDisabled(true);
@@ -69,7 +70,11 @@ void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 
 
     }
-
+    this->ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    this->ui->tableView->horizontalHeader()->setDefaultAlignment(Qt::AlignJustify);
+    this->ui->tableView->setShowGrid(false);
+    this->ui->tableWidget->setShowGrid(false);
+    this->ui->pushButton->setToolTip("User Profile");
     this->ui->tableView->verticalHeader()->hide();
     this->ui->tableWidget->setEditTriggers(QAbstractItemView::NoEditTriggers);
     this->ui->tableWidget->setSelectionBehavior(QAbstractItemView::SelectRows);

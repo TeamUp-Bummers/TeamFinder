@@ -19,7 +19,6 @@ public:
 protected:
 
     void showEvent(QShowEvent *event) override;
-    void closeEvent(QCloseEvent *event) override;
 
 
 private slots:
@@ -31,6 +30,8 @@ private slots:
     void on_ProfileSave_clicked();
 
 
+
+    void on_cancel_clicked();
 
 private:
     Ui::UserProfile *ui;

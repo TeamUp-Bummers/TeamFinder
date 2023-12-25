@@ -18,7 +18,7 @@ ViewProfile::~ViewProfile()
 
 void ViewProfile::showEvent(QShowEvent *event)
 {
-    this->setWindowTitle("User :"+this->username);
+    this->setWindowTitle("Teamfinder : "+this->username);
     ProfileData* profile_data = RetrieveData(this->username);
 
 

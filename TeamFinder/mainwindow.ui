@@ -23,14 +23,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Teamfinder</string>
+   <string>Teamfinder : Login</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0.943, y2:0.75, stop:0.153409 rgba(52, 148, 139, 255), stop:0.625 rgba(92, 170, 130, 255));</string>
+    <string notr="true">background-color:#666;</string>
    </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
@@ -42,7 +42,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(0,0,0,.7)</string>
+     <string notr="true">background:none;
+background-color: rgba(32, 32, 32,.9);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -92,7 +93,7 @@ color:white;</string>
       <font>
        <family>Poppins</family>
        <pointsize>10</pointsize>
-       <bold>false</bold>
+       <bold>true</bold>
        <underline>false</underline>
       </font>
      </property>
@@ -117,7 +118,7 @@ color:white;</string>
       <font>
        <family>Poppins</family>
        <pointsize>10</pointsize>
-       <bold>false</bold>
+       <bold>true</bold>
        <underline>false</underline>
       </font>
      </property>

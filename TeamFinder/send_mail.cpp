@@ -28,7 +28,9 @@ send_mail::send_mail(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::send_mail)
 {
+
     ui->setupUi(this);
+    this->ui->sendInvite->setCursor(Qt::PointingHandCursor);
 
 }
 
@@ -49,6 +51,7 @@ void send_mail::on_sendInvite_clicked()
     QString content = this->ui->message->toPlainText();
     QString email = this->ui->email->text();
     QString subject= this->ui->subject->text();
+
 
     bool isEmpty = (content.isEmpty() || email.isEmpty() || subject.isEmpty());
     if(!isEmpty){

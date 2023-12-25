@@ -14,6 +14,7 @@ UserProfile::UserProfile(QWidget *parent) :
     ui(new Ui::UserProfile)
 {
     ui->setupUi(this);
+
 }
 
 UserProfile::~UserProfile()
@@ -22,7 +23,7 @@ UserProfile::~UserProfile()
 }
 void UserProfile::showEvent(QShowEvent *event){
 // ReadGames From a File
-
+    this->setWindowTitle("Teamfinder : " + CurrentUser);
     this->ui->username->setText(CurrentUser);
     //---------------Hard Coded For Now--------------
     this->ui->GameID->addItem("Counter Strike");
@@ -41,18 +42,7 @@ void UserProfile::showEvent(QShowEvent *event){
     QMainWindow::showEvent(event);
 }
 
-void UserProfile::closeEvent(QCloseEvent *event){
 
-    int result = QMessageBox::question(this,"Confirmation","Are You Sure , You want to close this window. Your Changes will not be Saved !",QMessageBox::Yes|QMessageBox::No);
-    if(result == QMessageBox::Yes){
-        event->accept();
-        Mainscreen* mainscreen = new Mainscreen();
-        mainscreen->show();
-    }else{
-        event->ignore();
-    }
-
-}
 
 
 
@@ -112,10 +102,19 @@ void UserProfile::on_ProfileSave_clicked()
         this->close();
         mainscreen->show();
         UpdateProfile(current_game,rank_id,profile_description,playtime.toInt(),discord_tag,user_email);
+
     }
 }
 
 
 
 
+
+
+void UserProfile::on_cancel_clicked()
+{
+    this->close();
+    Mainscreen* mainscreen =new Mainscreen();
+    mainscreen->show();
+}
 

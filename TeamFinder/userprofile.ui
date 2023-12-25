@@ -6,20 +6,17 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>771</width>
-    <height>551</height>
+    <width>731</width>
+    <height>522</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string/>
   </property>
   <property name="styleSheet">
    <string notr="true">
-*{background-image: url(:/images/rsc/backgrnd.png);
-	background-position:center center;
-background-repeat:no-repeat;
- background-attachment: fixed;
- background-size: cover;
+*{
+background-color:#666;
 color:white;
 font-family:&quot;poppins&quot;;
 }
@@ -49,15 +46,15 @@ QMessageBox QPushButton{
    <widget class="QFrame" name="frame">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>741</width>
-      <height>521</height>
+      <x>0</x>
+      <y>0</y>
+      <width>761</width>
+      <height>541</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">background:none;
-background-color:rgba(0,0,0,.8);
+background-color: rgba(32, 32, 32,.9);
 border-radius:5px;</string>
     </property>
     <property name="frameShape">
@@ -99,10 +96,17 @@ background:none;
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>70</y>
+       <y>80</y>
        <width>111</width>
        <height>16</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
@@ -166,6 +170,13 @@ QTextEdit:focus{
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
      </property>
@@ -228,6 +239,13 @@ QLineEdit:focus{
        <width>151</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
@@ -300,6 +318,13 @@ QPushButton:pressed {
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
      </property>
@@ -315,6 +340,13 @@ QPushButton:pressed {
        <width>141</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
@@ -362,7 +394,7 @@ border-radius:5px;</string>
     <widget class="QPushButton" name="ProfileSave">
      <property name="geometry">
       <rect>
-       <x>270</x>
+       <x>530</x>
        <y>470</y>
        <width>181</width>
        <height>31</height>
@@ -401,6 +433,13 @@ QPushButton:pressed {
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
      </property>
@@ -417,11 +456,51 @@ QPushButton:pressed {
        <height>16</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background:none;</string>
      </property>
      <property name="text">
       <string>Select Rank</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="cancel">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>470</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QPushButton{
+background:#fff;
+border-radius:5px;
+color:black;
+
+}
+
+QPushButton:hover {
+    background-color: lightgray;
+}
+
+QPushButton:pressed {
+    background-color: gray;
+
+}</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
      </property>
     </widget>
    </widget>

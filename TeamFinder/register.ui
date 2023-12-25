@@ -23,14 +23,14 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Register</string>
+   <string>Teamfinder : Register</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
    <property name="styleSheet">
-    <string notr="true">background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(99, 198, 214, 255), stop:1 rgba(174, 204, 166, 255));</string>
+    <string notr="true">background-color:#666;</string>
    </property>
    <widget class="QFrame" name="frame">
     <property name="geometry">
@@ -42,8 +42,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color:rgba(0,0,0,.7);
-</string>
+     <string notr="true">background:none;
+background-color: rgba(32, 32, 32,.9);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -282,7 +282,7 @@ pointer-events:click;</string>
       <font>
        <family>Poppins</family>
        <pointsize>10</pointsize>
-       <bold>false</bold>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -306,7 +306,7 @@ color:white;</string>
       <font>
        <family>Poppins</family>
        <pointsize>10</pointsize>
-       <bold>false</bold>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
@@ -330,7 +330,7 @@ color:white;</string>
       <font>
        <family>Poppins</family>
        <pointsize>10</pointsize>
-       <bold>false</bold>
+       <bold>true</bold>
       </font>
      </property>
      <property name="styleSheet">
