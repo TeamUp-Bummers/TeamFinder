@@ -271,8 +271,7 @@ QPushButton:pressed {
 background-color:none;
 background-color:transparent;
 border:none;
-cursor:pointer;
-pointer-events:click;</string>
+</string>
      </property>
      <property name="text">
       <string>👁</string>
