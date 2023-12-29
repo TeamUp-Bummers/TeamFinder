@@ -13,6 +13,9 @@ changePassword::changePassword(QWidget *parent) :
 changePassword::~changePassword()
 {
     delete ui;
+    this->ui->passwordView->setCheckable(true);
+    this->ui->passwordView_2->setCheckable(true);
+    this->ui->passwordView_3->setCheckable(true);
 }
 
 

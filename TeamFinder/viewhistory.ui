@@ -162,7 +162,7 @@ QPushButton:pressed {
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
      <rect>
-      <x>170</x>
+      <x>160</x>
       <y>340</y>
       <width>91</width>
       <height>24</height>
@@ -195,9 +195,9 @@ QPushButton:pressed {
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
+      <x>290</x>
       <y>340</y>
-      <width>91</width>
+      <width>101</width>
       <height>24</height>
      </rect>
     </property>
@@ -254,7 +254,7 @@ QPushButton:pressed {
     <property name="font">
      <font>
       <family>Poppins</family>
-      <pointsize>11</pointsize>
+      <pointsize>12</pointsize>
       <bold>true</bold>
      </font>
     </property>
@@ -272,7 +272,7 @@ QPushButton:pressed {
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>40</y>
+      <y>50</y>
       <width>101</width>
       <height>21</height>
      </rect>
@@ -294,9 +294,9 @@ QPushButton:pressed {
    <widget class="QLabel" name="timestamp">
     <property name="geometry">
      <rect>
-      <x>140</x>
+      <x>120</x>
       <y>40</y>
-      <width>251</width>
+      <width>171</width>
       <height>21</height>
      </rect>
     </property>

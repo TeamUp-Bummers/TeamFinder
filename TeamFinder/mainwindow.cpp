@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->pushButton->setCursor(Qt::PointingHandCursor);
     this->ui->pushButton_2->setCursor(Qt::PointingHandCursor);
     this->ui->Register->setCursor(Qt::PointingHandCursor);
+    this->ui->pushButton_2->setCheckable(true);
 }
 
 MainWindow::~MainWindow()
@@ -65,13 +66,18 @@ void MainWindow::on_pushButton_2_clicked()
 
     switch(this->ui->password->echoMode()){
     case (QLineEdit::Password):
+
         this->ui->password->setEchoMode(QLineEdit::Normal);
         break;
     default:
+
         this->ui->password->setEchoMode(QLineEdit::Password);
     }
 
 }
+
+
+
 
 
 

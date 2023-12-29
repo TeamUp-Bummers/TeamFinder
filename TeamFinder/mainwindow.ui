@@ -274,7 +274,12 @@ border:none;
 </string>
      </property>
      <property name="text">
-      <string>👁</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset resource="Images.qrc">
+       <normaloff>:/images/rsc/show_password.png</normaloff>
+       <normalon>:/images/rsc/hide_password.png</normalon>:/images/rsc/show_password.png</iconset>
      </property>
     </widget>
     <widget class="QLabel" name="image">

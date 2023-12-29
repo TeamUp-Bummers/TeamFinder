@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/images">
         <file>rsc/login-image.png</file>
-        <file>rsc/hide.png</file>
-        <file>rsc/show.png</file>
+        <file>rsc/hide_password.png</file>
+        <file>rsc/show_password.png</file>
     </qresource>
 </RCC>
