@@ -31,11 +31,11 @@ void changePassword::on_pushButton_clicked()
         if(passwordMatch(CurrentUser,entered_password)){
             if(passwordMatches(newPassword,confirmPassword)){
                 if(isValidPassword(newPassword)){
-                    updatePassword(newPassword);
+                    updatePassword(newPassword,CurrentUser);
                     QMessageBox::information(this,"Status","Password Has Been Updated !");
                     this->close();
                 }else{
-                    QMessageBox::information(this,"Information","Use A Strong Password");
+                    QMessageBox::information(this,"Information","Use A Strong Password! (uppercase,lowercase and numbers)");
                 }
 
             } else{

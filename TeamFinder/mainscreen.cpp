@@ -270,7 +270,7 @@ void Mainscreen::on_sendInvite_clicked()
         send_mail* sendinvitation= new send_mail();
         sendinvitation->exec();
     }else{
-        QMessageBox::information(this,"Alert","First Fill Up You Profile Before Sending an Invitation !");
+        QMessageBox::information(this,"Alert","First Fill Up Your Profile Before Sending an Invitation !");
     }
 }
 

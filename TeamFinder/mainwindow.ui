@@ -307,6 +307,38 @@ border:none;
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_3">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>340</y>
+       <width>111</width>
+       <height>24</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+       <pointsize>-1</pointsize>
+       <underline>false</underline>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;
+background:transparent;
+font-family:&quot;Poppins&quot;;
+font-size:10px;
+color:white;
+border:none;
+</string>
+     </property>
+     <property name="text">
+      <string>Forgot Password?</string>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

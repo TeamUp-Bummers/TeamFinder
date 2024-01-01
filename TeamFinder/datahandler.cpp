@@ -75,17 +75,18 @@ bool passwordMatch(const QString& username,const QString& password){
 
 
 
-void CreateEntry(const QString & username, const QString & password,const QString& salt)
+void CreateEntry(const QString & username, const QString & password,const QString& salt, const QString& unique_key)
 {
     QSqlQuery query;
-    query.prepare("INSERT INTO teamfinder.users(username,password,salt) VALUES(:username,:password,:salt)");
+    query.prepare("INSERT INTO teamfinder.users(username,password,salt,Unique_Key) VALUES(:username,:password,:salt,:Unique_Key)");
     query.bindValue(":username",username);
     query.bindValue(":password",password);
     query.bindValue(":salt",salt);
+    query.bindValue(":Unique_Key",unique_key);
     query.exec();
 }
 
-void updatePassword(const QString &password)
+void updatePassword(const QString &password , const QString& username)
 {
 
     QSqlQuery query;
@@ -93,7 +94,7 @@ void updatePassword(const QString &password)
     query.prepare("UPDATE teamfinder.users SET password=(:password),salt=(:salt) WHERE username=(:username)");
     query.bindValue(":password",HashFunction(password+salt));
     query.bindValue(":salt",salt);
-    query.bindValue(":username",CurrentUser);
+    query.bindValue(":username",username);
     query.exec();
 
 }
@@ -247,3 +248,15 @@ QSortFilterProxyModel *FilterByName(QAbstractItemModel *model, const QString &se
 
 
 
+
+bool UniqueKeyMatch(const QString &username, const QString &unique_key)
+{
+    QSqlQuery query;
+    query.prepare("SELECT Unique_Key FROM teamfinder.users WHERE username=(:username)");
+    query.bindValue(":username",username);
+    query.exec();
+    if(query.next()){
+      return (unique_key == query.value(0).toString());
+    }
+
+}

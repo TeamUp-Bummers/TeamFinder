@@ -37,14 +37,14 @@ bool passwordMatches(const QString &password, const QString& confirm_password)
 
 
 // Make Registration If All Condition Checks are Verified
-Registration_Status MakeRegistration(const QString &username, const QString &password, const QString& confirmPassword)
+Registration_Status MakeRegistration(const QString &username, const QString &password, const QString& confirmPassword , const QString& UniqueKey)
 {
 
     if(!(UserNameMatches(username))){
         if(passwordMatches(password,confirmPassword)){
             if(isValidPassword(password)){
                 QString password_salt = GenerateSalt();
-                CreateEntry(username,HashFunction(password+password_salt),password_salt);
+                CreateEntry(username,HashFunction(password+password_salt),password_salt,HashFunction(UniqueKey));
                 return REGISTERED;
             }else{
                 return WEAK_PASSWORD;

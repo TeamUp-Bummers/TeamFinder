@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>292</width>
-    <height>550</height>
+    <height>620</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -19,7 +19,7 @@
   <property name="maximumSize">
    <size>
     <width>292</width>
-    <height>550</height>
+    <height>620</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -38,7 +38,7 @@
       <x>-11</x>
       <y>-1</y>
       <width>371</width>
-      <height>571</height>
+      <height>641</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -157,7 +157,7 @@ color:white;</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>500</y>
+       <y>570</y>
        <width>251</width>
        <height>31</height>
       </rect>
@@ -197,7 +197,7 @@ QPushButton:pressed {
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>450</y>
+       <y>520</y>
        <width>251</width>
        <height>31</height>
       </rect>
@@ -385,6 +385,53 @@ color:white;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="unique_key">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>460</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border:none;
+background-color:transparent;
+border-top:0;
+border-radius:0px;
+border-bottom:1px solid white;
+color:white;</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="key_label">
+     <property name="geometry">
+      <rect>
+       <x>30</x>
+       <y>430</y>
+       <width>121</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Poppins</family>
+       <pointsize>10</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background:none;
+color:white;</string>
+     </property>
+     <property name="text">
+      <string>Unique Key</string>
      </property>
     </widget>
    </widget>

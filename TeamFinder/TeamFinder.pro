@@ -15,6 +15,7 @@ CONFIG += c++17
 SOURCES += \
     changepassword.cpp \
     datahandler.cpp \
+    forgot_password.cpp \
     history.cpp \
     main.cpp \
     mainscreen.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 HEADERS += \
     changepassword.h \
     datahandler.h \
+    forgot_password.h \
     history.h \
     mainscreen.h \
     mainwindow.h \
@@ -41,6 +43,7 @@ HEADERS += \
 
 FORMS += \
     changepassword.ui \
+    forgot_password.ui \
     mainscreen.ui \
     mainwindow.ui \
     register.ui \

@@ -35,13 +35,13 @@ bool passwordMatch(const QString& username,const QString& password);
 
 
 void connectDatabase();
-void CreateEntry(const QString&,const QString&,const QString&);
-void updatePassword(const QString& password);
+void CreateEntry(const QString&,const QString&,const QString&,const QString&);
+void updatePassword(const QString& password,const QString& username);
 void  UpdateUserName(const QString& username);
 void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime,const QString& discord_tag,const QString& email);
 
 QSortFilterProxyModel* FilterByName(QAbstractItemModel* model,const QString& searchFilter);
-
+bool UniqueKeyMatch(const QString& username,const QString& unique_key);
 
 
 #endif // DATAHANDLER_H

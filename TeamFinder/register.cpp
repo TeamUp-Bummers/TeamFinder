@@ -37,18 +37,19 @@ void Register::on_pushButton_clicked()
     QString username = ui->username->text();
     QString password = ui->password->text();
     QString confirmPassword = ui->confirm_password->text();
+    QString UniqueKey = ui->unique_key->text();
 
-    if(!(username.isEmpty()) && !(password.isEmpty()) && !(confirmPassword.isEmpty())){
+    if(!(username.isEmpty()) && !(password.isEmpty()) && !(confirmPassword.isEmpty()) && !(UniqueKey.isEmpty())){
 
             Registration_Status status;
-            status = MakeRegistration(username,password,confirmPassword);
+            status = MakeRegistration(username,password,confirmPassword,UniqueKey);
             if(status == REGISTERED){
                 QMessageBox::information(this,"Registration Status","Successfully Registered New User");
                 this->close();
                 MainWindow* mainwindow = new MainWindow();
                 mainwindow->show();
             }else if(status==WEAK_PASSWORD){
-                QMessageBox::information(this,"Registration Status","Use A Strong Password !");
+                QMessageBox::information(this,"Registration Status","Use A Strong Password ! (uppercase,lowercase and numbers)");
             }else if(status==ALREADY_EXISTS){
                 QMessageBox::information(this,"Registration Status","User with that name already exists !");
             }else if(status==DIDNT_MATCH){

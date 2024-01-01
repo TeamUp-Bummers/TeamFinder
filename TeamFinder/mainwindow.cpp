@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "datahandler.h"
 #include "ui_mainwindow.h"
+#include "forgot_password.h"
 #include <QLineEdit>
 
 QString CurrentUser;
@@ -80,4 +81,11 @@ void MainWindow::on_pushButton_2_clicked()
 
 
 
+
+
+void MainWindow::on_pushButton_3_clicked()
+{
+    forgot_password* password = new forgot_password();
+    password->exec();
+}
 
