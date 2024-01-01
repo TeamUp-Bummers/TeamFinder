@@ -100,4 +100,10 @@ QString HashFunction(const QString& password){
 
 };
 
+bool IsDataFilled(){
+    ProfileData* profileData =  RetrieveData(CurrentUser);
+    bool isValid = !(profileData->discord_tag.isEmpty() || profileData->email.isEmpty() || profileData->game_name.isEmpty() || profileData->game_rank.isEmpty() || profileData->playtime.isEmpty() || profileData->profile_description.isEmpty());
+    if(isValid) return true;
+    return false;
+}
 

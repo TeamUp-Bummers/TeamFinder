@@ -16,8 +16,8 @@ QSortFilterProxyModel* getSortedModel(QSqlQueryModel* model){
     sorted_model->setSourceModel(model);
     return sorted_model;
 }
-bool isAlreadyAdded(const QString& username){
-    for(int i=0;i<usercount;i++){
+    bool isAlreadyAdded(const QString& username){
+        for(int i=0;i<usercount;i++){
         if(user_lobby[i].username == username){
             return true;
         }
@@ -266,8 +266,12 @@ void Mainscreen::on_deleteUser_clicked()
 
 void Mainscreen::on_sendInvite_clicked()
 {
-    send_mail* sendinvitation = new send_mail();
-    sendinvitation->exec();
+    if(IsDataFilled()){
+        send_mail* sendinvitation= new send_mail();
+        sendinvitation->exec();
+    }else{
+        QMessageBox::information(this,"Alert","First Fill Up You Profile Before Sending an Invitation !");
+    }
 }
 
 
@@ -290,6 +294,7 @@ void Mainscreen::on_lineEdit_textChanged(const QString &arg1)
 
 void Mainscreen::on_viewHistory_clicked()
 {
+
     ViewHistory* viewhistory = new ViewHistory();
     viewhistory->show();
 }
