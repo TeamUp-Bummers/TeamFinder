@@ -13,7 +13,9 @@ Register::Register(QWidget *parent) :
     this->ui->pushButton->setCursor(Qt::PointingHandCursor);
     this->ui->confirmPasswordView->setCursor(Qt::PointingHandCursor);
     this->ui->passwordView->setCursor(Qt::PointingHandCursor);
-    this->ui->pushButton_2->setCursor(Qt::PointingHandCursor);
+    this->ui->confirmPasswordView->setCursor(Qt::PointingHandCursor);
+    this->ui->passwordView->setCheckable(true);
+    this->ui->confirmPasswordView->setCheckable(true);
 }
 
 Register::~Register()

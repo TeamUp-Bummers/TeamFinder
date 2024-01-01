@@ -169,6 +169,9 @@ color:white;</string>
        <bold>false</bold>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 background:white;
@@ -230,11 +233,14 @@ QPushButton:pressed {
     <widget class="QPushButton" name="confirmPasswordView">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>370</y>
+       <x>260</x>
+       <y>390</y>
        <width>21</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">
@@ -245,17 +251,26 @@ cursor:pointer;
 pointer-events:click;</string>
      </property>
      <property name="text">
-      <string>👁</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <activeoff>:/images/rsc/show_password.png</activeoff>
+       <activeon>:/images/rsc/hide_password.png</activeon>
+      </iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="passwordView">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>300</y>
+       <x>260</x>
+       <y>310</y>
        <width>21</width>
        <height>21</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">
@@ -266,7 +281,13 @@ cursor:pointer;
 pointer-events:click;</string>
      </property>
      <property name="text">
-      <string>👁</string>
+      <string/>
+     </property>
+     <property name="icon">
+      <iconset>
+       <activeoff>:/images/rsc/show_password.png</activeoff>
+       <activeon>:/images/rsc/hide_password.png</activeon>
+      </iconset>
      </property>
     </widget>
     <widget class="QLabel" name="label_4">
@@ -339,27 +360,6 @@ color:white;</string>
      </property>
      <property name="text">
       <string>Username</string>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="passwordView_2">
-     <property name="geometry">
-      <rect>
-       <x>310</x>
-       <y>230</y>
-       <width>21</width>
-       <height>21</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">
-background-color:none;
-background-color:transparent;
-border:none;
-cursor:pointer;
-pointer-events:click;</string>
-     </property>
-     <property name="text">
-      <string>👁</string>
      </property>
     </widget>
     <widget class="QLabel" name="image">
