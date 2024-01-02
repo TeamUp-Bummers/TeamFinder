@@ -38,7 +38,19 @@ send_mail::~send_mail()
 {
     delete ui;
 }
-
+/*
+    Slot function for handling the button click event in the send_mail class
+    - Create an instance of the SMTP_Credentials struct and populate it with SMTP information from the configuration file
+    - Retrieve content, email, and subject from UI elements
+    - Check if any of the content, email, or subject is empty
+    - If not empty, construct a Poco::Net::MailMessage with the provided information
+    - Add recipients from the user_lobby vector to the mail message
+    - Create an SMTPClientSession and login with the provided credentials
+    - Send the mail message
+    - Display a success message and close the window
+    - Handle any exceptions and display error information if necessary
+    - Delete the credentials struct
+*/
 void send_mail::on_sendInvite_clicked()
 {
     SMTP_Credentials* credentials = new SMTP_Credentials();

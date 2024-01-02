@@ -29,6 +29,14 @@ void Register::on_pushButton_2_clicked()
     MainWindow* mainwindow = new MainWindow();
     mainwindow->show();
 }
+/*
+    Slot function for handling the button click event in the Register class
+    - Retrieve username, password, confirmPassword, and UniqueKey from UI elements
+    - Check if any of the fields is empty
+    - Call MakeRegistration function with the provided information
+    - Display registration status messages based on the returned status
+    - Close the window and open the main window if registration is successful
+*/
 
 
 void Register::on_pushButton_clicked()

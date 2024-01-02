@@ -21,6 +21,13 @@ UserProfile::~UserProfile()
 {
     delete ui;
 }
+/*
+    Function to display user profile information when the UserProfile window is shown
+    - Set the window title to include the current username
+    - Set the displayed username
+    - Populate the game and rank combo boxes
+    - Retrieve and display the user's profile data
+*/
 void UserProfile::showEvent(QShowEvent *event){
 // ReadGames From a File
     this->setWindowTitle("Teamfinder : " + CurrentUser);
@@ -45,7 +52,11 @@ void UserProfile::showEvent(QShowEvent *event){
 
 
 
-
+/*
+    Function to handle the "Change Password" button click in the UserProfile window
+    - Create an instance of the changePassword window
+    - Execute the changePassword window
+*/
 
 void UserProfile::on_pushButton_clicked()
 {
@@ -64,6 +75,17 @@ void UserProfile::on_GameID_currentTextChanged(const QString &arg1)
 }
 
 
+
+
+
+/*
+    Function to handle the "Save" button click in the UserProfile window
+    - Retrieve and validate the user profile data from the input fields
+    - Check if the current user is trying to change their username and handle accordingly
+    - Update the username if changed and set the new username as the current user
+    - Close the current UserProfile window and open the Mainscreen window
+    - Update the user's profile data in the database
+*/
 void UserProfile::on_ProfileSave_clicked()
 {
 

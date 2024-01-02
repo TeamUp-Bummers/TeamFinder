@@ -16,6 +16,18 @@ forgot_password::~forgot_password()
 {
     delete ui;
 }
+/*
+    Slot function for handling the button click event in the forgot_password class
+    Retrieve entered values for username, unique key, and new password
+    Check if none of the fields is empty
+    If not empty, check if the entered new password and confirm password fields match
+    If matching, check if the new password is valid (uppercase, lowercase, and numbers)
+    If valid, check if the entered username exists
+    If the username exists, check if the entered unique key matches the one stored in the database
+    If the unique key matches, update the password for the user, display a success message, and close the window
+    If the unique key does not match or the username does not exist, display appropriate error messages
+    If any field is left empty, display a message to fill in all fields
+*/
 
 void forgot_password::on_pushButton_clicked()
 {
@@ -44,6 +56,11 @@ void forgot_password::on_pushButton_clicked()
 }
 }
 
+/*
+    Slot function for handling the visibility toggle button click event in the changePassword class
+    Toggle between password visibility and hidden modes for the current password line edit
+*/
+
 void forgot_password::on_passwordView_clicked()
 {
     switch(this->ui->pwrod->echoMode()){
@@ -56,7 +73,10 @@ void forgot_password::on_passwordView_clicked()
 }
 
 
-
+/*
+    Slot function for handling the visibility toggle button click event in the changePassword class
+    Toggle between password visibility and hidden modes for the current password line edit
+*/
 
 void forgot_password::on_passwordView_2_clicked()
 {

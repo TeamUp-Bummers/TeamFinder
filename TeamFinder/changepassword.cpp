@@ -19,7 +19,17 @@ changePassword::~changePassword()
 }
 
 
-
+/*
+    Slot function for handling the button click event in the changePassword class
+    Retrieve entered passwords from line edits
+    Check if any of the password fields is empty
+    If not empty, check if the entered current password matches the stored password for the current user
+    If passwords match, check if the entered new password and confirm password fields match
+    If matching, check if the new password is valid (uppercase, lowercase, and numbers)
+    If valid, update the password for the current user, display a success message, and close the window
+    If the entered passwords do not match or the new password is not valid, display appropriate error messages
+    If any field is left empty, display a message to fill in all fields
+*/
 
 void changePassword::on_pushButton_clicked()
 {
@@ -66,7 +76,10 @@ void changePassword::on_pushButton_2_clicked()
 
 
 
-
+/*
+    Slot function for handling the visibility toggle button click event in the changePassword class
+    Toggle between password visibility and hidden modes for the current password line edit
+*/
 
 
 void changePassword::on_passwordView_clicked()
@@ -80,7 +93,10 @@ void changePassword::on_passwordView_clicked()
     }
 }
 
-
+/*
+    Slot function for handling the visibility toggle button click event in the changePassword class
+    Toggle between password visibility and hidden modes for the current password line edit
+*/
 void changePassword::on_passwordView_2_clicked()
 {
     switch(this->ui->lineEdit_2->echoMode()){
@@ -92,7 +108,10 @@ void changePassword::on_passwordView_2_clicked()
     }
 }
 
-
+/*
+    Slot function for handling the visibility toggle button click event in the changePassword class
+    Toggle between password visibility and hidden modes for the current password line edit
+*/
 void changePassword::on_passwordView_3_clicked()
 {
     switch(this->ui->lineEdit_3->echoMode()){

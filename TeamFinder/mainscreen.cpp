@@ -6,9 +6,27 @@
 #include "viewhistory.h"
 #include "send_mail.h"
 
+/*
+    Definition of external variables
+    - usercount: An integer representing the count of users, initialized to 0
+    - user_lobby: A vector of LobbyData representing user lobby information
+*/
+
 int usercount = 0;
 
 std::vector<LobbyData> user_lobby;
+
+/*
+    Function to create a sorted QSortFilterProxyModel for a given QSqlQueryModel
+    - Create a QSortFilterProxyModel instance
+    - Enable dynamic sorting and set the source model to the provided QSqlQueryModel
+    - Return the sorted QSortFilterProxyModel
+
+    Function to check if a username is already added to the user_lobby vector
+    - Iterate through the user_lobby vector
+    - If the username matches any entry in the vector, return true
+    - If no match is found, return false
+*/
 
 QSortFilterProxyModel* getSortedModel(QSqlQueryModel* model){
     QSortFilterProxyModel *sorted_model = new QSortFilterProxyModel();
@@ -25,6 +43,11 @@ QSortFilterProxyModel* getSortedModel(QSqlQueryModel* model){
     return false;
 
 }
+    /*
+    Function to remove a player from the user_lobby vector based on the provided username
+    - Iterate through the user_lobby vector
+    - If the username matches any entry in the vector, erase that entry and break from the loop
+*/
 
 void RemovePlayer(const QString& username){
     for(int i=0;i<usercount;i++){
@@ -47,6 +70,17 @@ Mainscreen::~Mainscreen()
 {
     delete ui;
 }
+
+/*
+    Override of the showEvent function for the Mainscreen class
+    - Disable certain buttons if the user count is 0
+    - Populate the tableWidget with data from the user_lobby vector
+    - Set properties and formatting for various UI elements
+    - Add items to the "game" comboBox
+    - Retrieve information from the database and set up sorting for the tableView
+    - Store the retrieved model in the working_model variable
+    - Call the base class showEvent function
+*/
 
 void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 {
@@ -103,7 +137,12 @@ void Mainscreen::Mainscreen::showEvent(QShowEvent *event)
 
 }
 
-
+/*
+    Slot function for handling the button click event in the Mainscreen class
+    Create an instance of the UserProfile class
+    Close the current Mainscreen window
+    Show the UserProfile window
+*/
 void Mainscreen::on_pushButton_clicked()
 {
     UserProfile* userprofile = new UserProfile();
@@ -111,7 +150,13 @@ void Mainscreen::on_pushButton_clicked()
     userprofile->show();
 }
 
-
+/*
+    Slot function for handling the button click event in the Mainscreen class
+    Reset current user, clear user lobby, and set user count to 0
+    Close the current Mainscreen window
+    Create an instance of the MainWindow class
+    Show the MainWindow window
+*/
 void Mainscreen::on_pushButton_2_clicked()
 {
     CurrentUser = "";
@@ -124,7 +169,12 @@ void Mainscreen::on_pushButton_2_clicked()
 
 }
 
-
+/*
+    Slot function for handling the button click event in the Mainscreen class
+    Clear lineEdit, reset game and rank comboBoxes, retrieve information from the database,
+    create a sorted model, and set it to the tableView
+    Update the working_model variable with the retrieved model
+*/
 void Mainscreen::on_pushButton_3_clicked()
 {
     this->ui->lineEdit->clear();
@@ -140,7 +190,12 @@ void Mainscreen::on_pushButton_3_clicked()
 
 }
 
-
+/*
+    Slot function for handling the currentTextChanged signal of the "game" comboBox in the Mainscreen class
+    Retrieve ranks for the selected game and update the "rank" comboBox with the retrieved ranks
+    Filter information based on the selected game, create a sorted model, and set it to the tableView
+    Update the working_model variable with the retrieved model
+*/
 
 void Mainscreen::on_game_currentTextChanged(const QString &arg1)
 {
@@ -158,7 +213,11 @@ void Mainscreen::on_game_currentTextChanged(const QString &arg1)
 
 
 }
-
+/*
+    Slot function for handling the currentTextChanged signal of the "rank" comboBox in the Mainscreen class
+    Filter information based on the selected game and rank, create a sorted model, and set it to the tableView
+    Update the working_model variable with the retrieved model
+*/
 
 void Mainscreen::on_rank_currentTextChanged(const QString &arg1)
 {
@@ -171,7 +230,15 @@ void Mainscreen::on_rank_currentTextChanged(const QString &arg1)
     this->working_model = model;
 }
 
-
+/*
+    Slot function for handling the double-clicked signal of the tableView in the Mainscreen class
+    Get the index of the selected row in the tableView
+    Get the model of the tableView
+    Get the index of the first column in the selected row
+    Retrieve the username from the data in the first column of the selected row
+    Create an instance of the ViewProfile class with the retrieved username
+    Show the ViewProfile window
+*/
 void Mainscreen::on_tableView_doubleClicked()
 {
     QModelIndex selectedRow = this->ui->tableView->selectionModel()->currentIndex();
@@ -184,6 +251,25 @@ void Mainscreen::on_tableView_doubleClicked()
     viewprofile->show();
 }
 
+
+/*
+    Slot function for handling the button click event in the Mainscreen class
+    Check if the user count is less than 4
+    Get the index of the selected row in the tableView
+    If a row is selected:
+        - Get the model of the tableView
+        - Get the index of the username in the selected row
+        - Retrieve the username and email from the data in the selected row
+        - Check if the user is not already added to the lobby
+        - If not added:
+            - Insert a new row in the tableWidget with the username and email
+            - Increment the user count and add the user to the user_lobby vector
+            - Enable delete and sendInvite buttons
+        - If the user is already added, display an information message
+    If no row is selected, display an information message
+    If the user count reaches 4, display an information message
+    Clear the selection in the tableView
+*/
 
 void Mainscreen::on_addToParty_clicked()
 {
@@ -224,7 +310,14 @@ void Mainscreen::on_addToParty_clicked()
 
 }
 
-
+/*
+    Slot function for handling the double-clicked signal of the tableWidget in the Mainscreen class
+    Get the index of the selected row in the tableWidget
+    Retrieve the username from the selected row in the first column
+    Create an instance of the ViewProfile class with the retrieved username
+    Show the ViewProfile window
+    Clear the selection in the tableWidget
+*/
 void Mainscreen::on_tableWidget_doubleClicked()
 {
 
@@ -235,6 +328,18 @@ void Mainscreen::on_tableWidget_doubleClicked()
     this->ui->tableWidget->selectionModel()->clear();
 
 }
+/*
+    Slot function for handling the button click event in the Mainscreen class
+    Get the index of the selected row in the tableWidget
+    If a row is selected:
+        - Retrieve the username from the selected row
+        - Remove the player from the user_lobby vector
+        - Remove the selected row from the tableWidget
+        - Decrement the user count
+        - If the user count becomes 0, disable delete and sendInvite buttons
+        - Clear the selection in the tableWidget
+    If no row is selected, display an information message
+*/
 
 
 void Mainscreen::on_deleteUser_clicked()

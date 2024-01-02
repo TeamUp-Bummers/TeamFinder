@@ -178,7 +178,7 @@ QTextEdit:focus{
       <rect>
        <x>20</x>
        <y>240</y>
-       <width>111</width>
+       <width>161</width>
        <height>16</height>
       </rect>
      </property>

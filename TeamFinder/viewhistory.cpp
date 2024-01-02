@@ -9,6 +9,18 @@
 
 
 
+/*
+    Function to update the data in the tableWidget in the ViewHistory class
+    - Set the tableWidget properties for editing triggers and selection behavior
+    - Clear the existing rows in the tableWidget
+    - Retrieve lobby history data using RetrieveLobbyHistory function
+    - Check if the lobbies map is not empty
+        - If not empty, check the index and update button conditions accordingly
+        - Extract timestamp and format it for display
+        - Update the timestamp label with the formatted time
+        - Retrieve lobby data for the current index and populate the tableWidget with usernames and emails
+    - If lobbies map is empty, disable the navigation buttons
+*/
 
 
 void ViewHistory::UpdateTableData()

@@ -23,6 +23,14 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/*
+    Slot function for handling the button click event in the MainWindow class
+    - Retrieve username and password from UI elements
+    - Check if any of the fields is empty
+    - Call the Login function with the provided information
+    - Display login status messages based on the returned status
+    - Close the window and open the main screen if login is successful
+*/
 
 void MainWindow::on_pushButton_clicked()
 {

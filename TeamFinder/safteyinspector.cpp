@@ -35,8 +35,14 @@ bool passwordMatches(const QString &password, const QString& confirm_password)
     return false;
 }
 
-
-// Make Registration If All Condition Checks are Verified
+/*
+    Function for user registration
+    - Check if the provided username already exists
+    - Check if the provided passwords match and meet the strength criteria
+    - Generate a salt for password hashing
+    - Call the CreateEntry function to insert the new user into the database
+    - Return the appropriate registration status
+*/
 Registration_Status MakeRegistration(const QString &username, const QString &password, const QString& confirmPassword , const QString& UniqueKey)
 {
 
@@ -80,7 +86,15 @@ QString GenerateSalt(){
     return Salt;
 };
 
-// Generate Hash For Password
+/*
+    Function to compute the SHA-256 hash of a given password
+    - Convert the QString password to a std::string
+    - Initialize an SHA256_CTX context
+    - Update the context with the password data
+    - Finalize the hash and store it in the hash array
+    - Convert the hash to a hexadecimal string and store it in a stringstream
+    - Convert the stringstream to a QString and return the hashed text
+*/
 QString HashFunction(const QString& password){
 
     std::string password_test = password.toStdString();
@@ -99,7 +113,7 @@ QString HashFunction(const QString& password){
     return hashed_text;
 
 };
-
+// Check if User profile is filled or not
 bool IsDataFilled(){
     ProfileData* profileData =  RetrieveData(CurrentUser);
     bool isValid = !(profileData->discord_tag.isEmpty() || profileData->email.isEmpty() || profileData->game_name.isEmpty() || profileData->game_rank.isEmpty() || profileData->playtime.isEmpty() || profileData->profile_description.isEmpty());

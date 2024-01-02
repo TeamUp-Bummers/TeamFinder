@@ -3,15 +3,33 @@
 #include <fstream>
 #include <string>
 #include <yaml-cpp/yaml.h>
-
+/*
+  Load YAML configuration file into a YAML::Node object
+*/
 YAML::Node config = YAML::LoadFile("config.yml");
+
+/*
+  Define a structure to hold database information
+*/
 struct DatabaseInformation{
-    QString hostname;
-    QString username;
-    QString password;
-    QString database_name;
-    int port_no;
+    QString hostname; // Hostname or IP address of the database server
+    QString username;  // Username for authenticating with the database
+    QString password;   // Password for authenticating with the database
+    QString database_name;// Name of the database to connect to
+    int port_no;// Port number to use for the database connection
 };
+
+/*
+    Function to establish a connection to a MySQL database using provided configuration
+    Create an instance of DatabaseInformation to store login details
+    Set database connection parameters from the configuration file
+    Create a QSqlDatabase instance for MySQL and set connection parameters
+    Attempt to open the database connection and print status
+    Print a message if the database connection is successful
+    Print a message if the database connection fails
+    Clean up by deleting the login_info object
+    Catch and print any exceptions that occur during the database connection process
+*/
 
 void connectDatabase(){
     try{
@@ -40,7 +58,17 @@ void connectDatabase(){
         qDebug()<< "Error : " << e.what();
     }
 }
-
+/*
+    Function to retrieve a username from the database if it exists
+    Create a QSqlQuery instance for executing SQL queries
+    Declare a QString variable to store the query result
+    Prepare an SQL query to select the username from the "users" table where the provided username matches
+    Bind the provided username to the SQL query
+    Execute the SQL query
+    Check if the query returned any results
+    If results exist, retrieve the first column's value (username) and store it in the 'result' variable
+    Return the retrieved username (or an empty string if no match is found)
+*/
 
 QString RetrieveUserNameIfExists(const QString& username){
     QSqlQuery query;
@@ -55,6 +83,18 @@ QString RetrieveUserNameIfExists(const QString& username){
 };
 
 
+/*
+    Function to check if the provided username exists and the corresponding password matches the stored hashed password
+    Create a QSqlQuery instance for executing SQL queries
+    Declare QString variables to store the hashed password and password salt from the database
+    Prepare an SQL query to select the password and salt from the "users" table where the provided username matches
+    Bind the provided username to the SQL query
+    Execute the SQL query
+    Check if the query returned any results
+    If results exist, retrieve the hashed password and password salt
+    Check if the provided password, combined with the salt and hashed, matches the stored hashed password
+    Return true if the passwords match, otherwise return false
+*/
 bool passwordMatch(const QString& username,const QString& password){
 
     QSqlQuery query;
@@ -73,7 +113,13 @@ bool passwordMatch(const QString& username,const QString& password){
 }
 
 
-
+/*
+    Function to create a new entry in the "users" table with provided username, password, salt, and unique key
+    Create a QSqlQuery instance for executing SQL queries
+    Prepare an SQL query to insert values into the "users" table
+    Bind the provided username, password, salt, and unique key to the SQL query
+    Execute the SQL query to insert the new entry into the database
+*/
 
 void CreateEntry(const QString & username, const QString & password,const QString& salt, const QString& unique_key)
 {
@@ -85,6 +131,15 @@ void CreateEntry(const QString & username, const QString & password,const QStrin
     query.bindValue(":Unique_Key",unique_key);
     query.exec();
 }
+
+/*
+    Function to update the password and salt for a specific username in the "users" table
+    Create a QSqlQuery instance for executing SQL queries
+    Generate a new salt using the GenerateSalt() function
+    Prepare an SQL query to update the password and salt in the "users" table
+    Bind the hashed password (using HashFunction), salt, and username to the SQL query
+    Execute the SQL query to update the password and salt for the specified username
+*/
 
 void updatePassword(const QString &password , const QString& username)
 {
@@ -98,7 +153,16 @@ void updatePassword(const QString &password , const QString& username)
     query.exec();
 
 }
-
+/*
+    Function to retrieve ranks for a specific game from the corresponding table in the database
+    Create a QSqlQuery instance for executing SQL queries
+    Declare a QStringList variable to store the query results
+    Check the provided game parameter to determine the appropriate table
+    Prepare an SQL query to select all columns from the corresponding ranks table
+    Execute the SQL query
+    Iterate through the query results and append each rank to the 'result' QStringList
+    Return the QStringList containing the retrieved ranks
+*/
 QStringList RetrieveRanks(const QString &game){
     QSqlQuery query;
     QStringList result;
@@ -115,6 +179,14 @@ QStringList RetrieveRanks(const QString &game){
 
     return result;
 };
+/*
+    Function to update the username in the "users" and "profile_data" tables for a specific user
+    Create QSqlQuery instances for executing SQL queries for the "users" and "profile_data" tables
+    Prepare SQL queries to update the username in the respective tables
+    Bind the new username and the current username (CurrentUser) to the SQL queries
+    Execute the first query to update the username in the "users" table
+    If the first query is successful, execute the second query to update the username in the "profile_data" table
+*/
 
 void  UpdateUserName(const QString& username){
 
@@ -136,7 +208,14 @@ void  UpdateUserName(const QString& username){
 
 
 }
-
+/*
+    Function to update or insert a user's profile information into the "profile_data" table
+    Create a QSqlQuery instance for executing SQL queries
+    Prepare an SQL query to insert or update values in the "profile_data" table
+    Bind the current username (CurrentUser), profile description, game name, game rank, playtime, discord tag, and email to the SQL query
+    Use ON DUPLICATE KEY UPDATE to handle insertion or update based on existing primary key (username)
+    Execute the SQL query to update or insert the user's profile information
+*/
 void UpdateProfile(const QString& game, const QString& rank, const QString& profile_description,int playtime,const QString& discord_tag,const QString& email){
 
     QSqlQuery query;
@@ -155,7 +234,17 @@ void UpdateProfile(const QString& game, const QString& rank, const QString& prof
     query.exec();
 
 };
-
+/*
+    Function to retrieve user profile data from the "profile_data" table based on the provided username
+    Create a QSqlQuery instance for executing SQL queries
+    Prepare an SQL query to select specific columns from the "profile_data" table where the username matches
+    Bind the provided username to the SQL query
+    Execute the SQL query
+    Create an instance of the ProfileData struct to store the retrieved data
+    Check if the query returned any results
+    If results exist, populate the ProfileData instance with values from the query
+    Return the ProfileData instance containing the retrieved user profile data
+*/
 ProfileData* RetrieveData(const QString& username){
 
     QSqlQuery query;
@@ -175,6 +264,19 @@ ProfileData* RetrieveData(const QString& username){
     return current_user;
 };
 
+/*
+    Function to retrieve filtered user information from the "profile_data" table for potential matches
+    Create a QSqlQuery instance for executing SQL queries
+    Create a QSqlQueryModel instance to store the query results for easy integration with Qt views
+    Prepare an SQL query to select specific columns from the "profile_data" table
+    Filter results to exclude rows with NULL values in certain columns and the current user's username
+    Order the results randomly using ORDER BY RAND()
+    Bind the current username (CurrentUser) to the SQL query
+    Execute the SQL query
+    Check if the query returned any results
+    If results exist, set the query results in the QSqlQueryModel and return it
+    If no results, return nullptr
+*/
 
 QSqlQueryModel* RetrieveInformation()
 {
@@ -193,6 +295,21 @@ QSqlQueryModel* RetrieveInformation()
     }
 
 }
+
+
+/*
+    Function to filter and retrieve user information based on the provided game and rank criteria
+    Create a QSqlQuery instance for executing SQL queries
+    Create a QSqlQueryModel instance to store the query results for easy integration with Qt views
+    Declare QString variables to construct the SQL query based on provided parameters
+    Prepare an SQL query to select specific columns from the "profile_data" table
+    Filter results to exclude rows with NULL values in certain columns and the current user's username
+    Add additional conditions based on provided game and rank parameters
+    Order the results randomly using ORDER BY RAND()
+    Bind the current username (CurrentUser), game, and rank (if provided) to the SQL query
+    Execute the SQL query
+    Set the query results in the QSqlQueryModel and return it
+*/
 
 QSqlQueryModel* Filter(const QString& game,const QString& rank){
     QSqlQuery query;
@@ -216,6 +333,17 @@ QSqlQueryModel* Filter(const QString& game,const QString& rank){
     model->setQuery(query);
     return model;
 }
+/*
+    Function to retrieve specific profile data based on the provided column (string) and username
+    Construct a SELECT statement to retrieve the specified column from the "profile_data" table
+    Construct a WHERE condition to filter results based on the provided username
+    Create a QSqlQuery instance for executing SQL queries
+    Prepare an SQL query to select the specified column for the provided username
+    Bind the provided username to the SQL query
+    Execute the SQL query
+    Check if the query returned any results
+    If results exist, return the value of the specified column as a QString
+*/
 
 QString  GetSpecificProfileData(const QString &string,const QString& username)
 {
@@ -231,7 +359,14 @@ QString  GetSpecificProfileData(const QString &string,const QString& username)
 
 
 }
-
+/*
+    Function to filter a given QAbstractItemModel by name using a QSortFilterProxyModel
+    Create a QSortFilterProxyModel instance to act as a filter for the provided model
+    Set the source model to the provided model
+    Set filter properties for case insensitivity and key column
+    Set the fixed string filter based on the provided searchFilter
+    Return the QSortFilterProxyModel
+*/
 
 QSortFilterProxyModel *FilterByName(QAbstractItemModel *model, const QString &searchFilter)
 {
@@ -248,7 +383,16 @@ QSortFilterProxyModel *FilterByName(QAbstractItemModel *model, const QString &se
 
 
 
-
+/*
+    Function to check if the provided unique key matches the one stored in the "users" table for a given username
+    Create a QSqlQuery instance for executing SQL queries
+    Prepare an SQL query to select the Unique_Key from the "users" table where the provided username matches
+    Bind the provided username to the SQL query
+    Execute the SQL query
+    Check if the query returned any results
+    If results exist, compare the provided unique key with the one retrieved from the query
+    Return true if the unique keys match, otherwise return false
+*/
 bool UniqueKeyMatch(const QString &username, const QString &unique_key)
 {
     QSqlQuery query;

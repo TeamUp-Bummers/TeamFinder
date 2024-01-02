@@ -15,6 +15,12 @@ ViewProfile::~ViewProfile()
 {
     delete ui;
 }
+/*
+    Overridden function to handle the showEvent in the ViewProfile class
+    - Set the window title to "Teamfinder : " followed by the username
+    - Retrieve profile data using the RetrieveData function
+    - Update UI elements with the retrieved profile data (username, profile description, playtime, discord tag, email, game information, rank data)
+*/
 
 void ViewProfile::showEvent(QShowEvent *event)
 {
